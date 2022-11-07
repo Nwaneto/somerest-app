@@ -2,3 +2,7 @@
 .dart_tool/*
 build/*
 tutorial.txt
+android
+ios
+macos
+windows
