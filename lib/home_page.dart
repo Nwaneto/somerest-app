@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:somerest/responsive.dart';
-import 'package:somerest/top_bar_contents.dart';
+import 'top_bar_contents.dart';
 
 import 'menu_drawer.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -34,11 +35,11 @@ class _HomePageState extends State<HomePage> {
 	return Scaffold(
 		appBar: PreferredSize(
 			preferredSize: Size(screenSize.width, 70),
-			child: TopBarContents()
+			child: TopBarContents(),
 		),
 		body: SingleChildScrollView(
 		controller: _scrollController,
-		physics: ClampingScrollPhysics(),
+		physics: const ClampingScrollPhysics(),
 		child: Column(
 		  children: [
 			Stack(

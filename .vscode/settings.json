@@ -1,3 +1,4 @@
 {
-	"dart.analysisServerFolding": true
+	"dart.analysisServerFolding": true,
+	"cmake.configureOnOpen": false
 }
