@@ -36,7 +36,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 					children: [
 					SizedBox(width: screenSize.width/20),
 					// Home page
-					Text (
+					const Text (
 						'Somerest',
 						style: TextStyle (
 							color: Colors.blue,
@@ -82,7 +82,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 
 								height: 2,
 								width: 20,
-								color: Color(0xFF051441),
+								color: const Color(0xFF051441),
 							),
 							)
 						],
@@ -110,8 +110,8 @@ class _TopBarContentsState extends State<TopBarContents> {
 							'About Us',
 							style: TextStyle(
 								color: _isHovering[1]
-									? Color(0xFF077bd7)
-									: Color(0xFF077bd7),
+									? const Color(0xFF077bd7)
+									: const Color(0xFF077bd7),
 								fontWeight: FontWeight.bold,
 								fontSize: 16
 							),
@@ -125,7 +125,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 							child: Container(
 								height: 2,
 								width: 20,
-								color: Color(0xFF051441),
+								color: const Color(0xFF051441),
 							),
 							)
 						],
@@ -168,7 +168,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 							child: Container(
 								height: 2,
 								width: 20,
-								color: Color(0xFF051441),
+								color:const Color(0xFF051441),
 							),
 							)
 						],
@@ -236,7 +236,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 						children: [
 							const SizedBox(height: 10),
 							Text(
-							'Submit CV',
+							'Submit a CV',
 							style: TextStyle(
 								color: _isHovering[4]
 									? Colors.blue

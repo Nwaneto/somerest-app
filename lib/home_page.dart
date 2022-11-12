@@ -33,10 +33,27 @@ class _HomePageState extends State<HomePage> {
 	var screenSize = MediaQuery.of(context).size;
 
 	return Scaffold(
-		appBar: PreferredSize(
+		appBar: ResponsiveWidget.isSmallScreen(context) ? 
+        AppBar(
+            iconTheme: const IconThemeData(color: Color(0xFF077bd7)),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            centerTitle: true,
+            title: 
+            const Text (
+                "Somerest",
+                style: TextStyle(
+                    color: Color(0xFF077bd7),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 26
+                ),
+            ),
+        ) : 
+        PreferredSize(
 			preferredSize: Size(screenSize.width, 70),
 			child: TopBarContents(),
 		),
+        drawer: const MenuDrawer(),
 		body: SingleChildScrollView(
 		controller: _scrollController,
 		physics: const ClampingScrollPhysics(),
