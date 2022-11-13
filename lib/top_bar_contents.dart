@@ -34,12 +34,12 @@ class _TopBarContentsState extends State<TopBarContents> {
 					child: Row (
 					mainAxisAlignment: MainAxisAlignment.start,
 					children: [
-					SizedBox(width: screenSize.width/20),
+					SizedBox(width: screenSize.width/5),
 					// Home page
 					const Text (
 						'Somerest',
 						style: TextStyle (
-							color: Colors.blue,
+							color: Colors.black,
 							fontSize: 20,
 							fontFamily: 'Raleway',
 							fontWeight: FontWeight.w900,
@@ -48,7 +48,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 
 
 					// Home
-					const SizedBox(width: 50),
+					const SizedBox(width: 100),
 					InkWell(
 						onHover: (value) {
 						setState(() {
@@ -63,12 +63,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 						children: [
 							const SizedBox(height: 10),
 							Text(
-							'Home',
+							'HOME',
 							style: TextStyle(
 								color: _isHovering[0]
 									? Color(0xFF077bd7)
-									: Color(0xFF077bd7),
-								fontWeight: FontWeight.bold,
+									: Colors.grey,
 								fontSize: 16
 							),
 							),
@@ -107,12 +106,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 						children: [
 							const SizedBox(height: 10),
 							Text(
-							'About Us',
+							'ABOUT US',
 							style: TextStyle(
 								color: _isHovering[1]
-									? const Color(0xFF077bd7)
-									: const Color(0xFF077bd7),
-								fontWeight: FontWeight.bold,
+									? Color(0xFF077bd7)
+									: Colors.grey,
 								fontSize: 16
 							),
 							),
@@ -150,12 +148,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 						children: [
 							const SizedBox(height: 10),
 							Text(
-							'Services',
+							'SERVICES',
 							style: TextStyle(
 								color: _isHovering[2]
-									? Colors.blue
-									: Colors.blue,
-								fontWeight: FontWeight.bold,
+									? Color(0xFF077bd7)
+									: Colors.grey,
 								fontSize: 16
 							),
 							),
@@ -193,12 +190,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 						children: [
 							const SizedBox(height: 10),
 							Text (
-							'Contact',
+							'CONTACT',
 							style: TextStyle(
 								color: _isHovering[3]
-									? Colors.blue
-									: Colors.blue,
-								fontWeight: FontWeight.bold,
+									? Color(0xFF077bd7)
+									: Colors.grey,
 								fontSize: 16
 							),
 							),
@@ -220,132 +216,76 @@ class _TopBarContentsState extends State<TopBarContents> {
 
 
 					// Submit CV
-					// TODO: #1 Switch to button
-					const SizedBox(width: 50),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[4] = true
-								: _isHovering[4] = false;
-						});
-						},
-						onTap: () {},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							'Submit a CV',
-							style: TextStyle(
-								color: _isHovering[4]
-									? Colors.blue
-									: Colors.blue,
-								fontWeight: FontWeight.bold,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[4],
-							child: Container(
-								height: 2,
-								width: 20,
-								color: Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
+					
+                    const SizedBox(width: 60),
+                    Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(2),
+                        decoration:  BoxDecoration(
+                            color: const Color(0xFF077bd7),
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: TextButton (
+                            onPressed: () {
+                                var s = "";
+                            },
+                            child: const Text(
+                                "Submit CV",
+                                style:  TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12
+                                ),
+                            )
+                        ),
+                    ),
 
 
 					// Login
-					// TODO: #1 Switch to button
-					const SizedBox(width: 20),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[5] = true
-								: _isHovering[5] = false;
-						});
-						},
-						onTap: () {},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							'Login',
-							style: TextStyle(
-								color: _isHovering[5]
-									? Colors.blue
-									: Colors.blue,
-								fontWeight: FontWeight.bold,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[5],
-							child: Container(
-								height: 2,
-								width: 20,
-								color: Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
+                    const SizedBox(width: 10),
+                    Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(2),
+                        decoration:  BoxDecoration(
+                            color: const Color(0xFF077bd7),
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: TextButton (
+                            onPressed: () {
+                                var s = "";
+                            },
+                            child: const Text(
+                                "Login",
+                                style:  TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12
+                                ),
+                            )
+                        ),
+                    ),
 
-
-					// Book a meeting.
-					// TODO: #1 Switch to button
-					const SizedBox(width: 20),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[6] = true
-								: _isHovering[6] = false;
-						});
-						},
-						onTap: () {},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							'Book a meeting',
-							style: TextStyle(
-								color: _isHovering[6]
-									? Colors.blue
-									: Colors.blue,
-								fontWeight: FontWeight.bold,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[6],
-							child: Container(
-								height: 2,
-								width: 20,
-								color: Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
+                        
+                    // Book a Meeting
+                    const SizedBox(width: 10),
+                    Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(2),
+                        decoration:  BoxDecoration(
+                            color: const Color(0xFF077bd7),
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: TextButton (
+                            onPressed: () {
+                                var s = "";
+                            },
+                            child: const Text(
+                                "Book A Meeting",
+                                style:  TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12
+                                ),
+                            )
+                        ),
+                    ),
 					],
 				),
 				),

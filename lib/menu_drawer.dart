@@ -97,7 +97,7 @@ class MenuDrawer extends StatelessWidget {
 							var s = "";
 						},
 						child: const Text(
-							"Submit A CV",
+							"Submit CV",
 							style:  TextStyle(
 								color: Colors.white,
 								fontSize: 18
