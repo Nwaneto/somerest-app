@@ -1,4 +1,8 @@
 {
 	"dart.analysisServerFolding": true,
-	"cmake.configureOnOpen": false
+	"cmake.configureOnOpen": false,
+	"cSpell.words": [
+		"Hakeeb",
+		"Olatunde"
+	]
 }

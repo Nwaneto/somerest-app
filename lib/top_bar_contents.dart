@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:somerest/responsive.dart';
 
 class TopBarContents extends StatefulWidget {
 
-  TopBarContents();
+  const TopBarContents({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -34,21 +35,37 @@ class _TopBarContentsState extends State<TopBarContents> {
 					child: Row (
 					mainAxisAlignment: MainAxisAlignment.start,
 					children: [
-					SizedBox(width: screenSize.width/5),
+					SizedBox(width: ResponsiveWidget.isMediumScreen(context) ? screenSize.width/40 : screenSize.width/6),
 					// Home page
-					const Text (
-						'Somerest',
-						style: TextStyle (
-							color: Colors.black,
-							fontSize: 20,
-							fontFamily: 'Raleway',
-							fontWeight: FontWeight.w900,
-						),
+					Container(
+						margin: const EdgeInsets.only(top: 10),
+						child: Column(
+							children: const [
+								Text (
+									'Somerest',
+									style: TextStyle (
+										color: Colors.black,
+										fontSize: 20,
+										fontFamily: 'Raleway',
+										fontWeight: FontWeight.w900,
+									),
+								),
+
+								Text (
+									'CONSULTING LIMITED',
+									style: TextStyle (
+										color: Colors.black,
+										fontSize: 8,
+										fontFamily: 'Raleway',
+									),
+								),
+							],
+						)
 					),
 
 
 					// Home
-					const SizedBox(width: 100),
+					const SizedBox(width: 60),
 					InkWell(
 						onHover: (value) {
 						setState(() {
@@ -216,76 +233,76 @@ class _TopBarContentsState extends State<TopBarContents> {
 
 
 					// Submit CV
-					
-                    const SizedBox(width: 60),
-                    Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        padding: const EdgeInsets.all(2),
-                        decoration:  BoxDecoration(
-                            color: const Color(0xFF077bd7),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: TextButton (
-                            onPressed: () {
-                                var s = "";
-                            },
-                            child: const Text(
-                                "Submit CV",
-                                style:  TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12
-                                ),
-                            )
-                        ),
-                    ),
+					SizedBox(width: ResponsiveWidget.isLargeScreen(context)?  screenSize.width * 0.25
+                    : 40),
+					Container(
+						margin: const EdgeInsets.only(top: 10),
+						padding: const EdgeInsets.all(2),
+						decoration:  BoxDecoration(
+							color: const Color(0xFF077bd7),
+							borderRadius: BorderRadius.circular(20)
+						),
+						child: TextButton (
+							onPressed: () {
+								var s = "";
+							},
+							child: const Text(
+								"Submit CV",
+								style:  TextStyle(
+									color: Colors.white,
+									fontSize: 12
+								),
+							)
+						),
+					),
 
 
 					// Login
-                    const SizedBox(width: 10),
-                    Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        padding: const EdgeInsets.all(2),
-                        decoration:  BoxDecoration(
-                            color: const Color(0xFF077bd7),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: TextButton (
-                            onPressed: () {
-                                var s = "";
-                            },
-                            child: const Text(
-                                "Login",
-                                style:  TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12
-                                ),
-                            )
-                        ),
-                    ),
+					const SizedBox(width: 10),
+					Container(
+						margin: const EdgeInsets.only(top: 10),
+						padding: const EdgeInsets.all(2),
+						decoration:  BoxDecoration(
+							color: const Color(0xFF077bd7),
+							borderRadius: BorderRadius.circular(20)
+						),
+						child: TextButton (
+							onPressed: () {
+								var s = "";
+							},
+							child: const Text(
+								"Login",
+								style:  TextStyle(
+									color: Colors.white,
+									fontSize: 12
+								),
+							)
+						),
+					),
 
-                        
-                    // Book a Meeting
-                    const SizedBox(width: 10),
-                    Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        padding: const EdgeInsets.all(2),
-                        decoration:  BoxDecoration(
-                            color: const Color(0xFF077bd7),
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: TextButton (
-                            onPressed: () {
-                                var s = "";
-                            },
-                            child: const Text(
-                                "Book A Meeting",
-                                style:  TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12
-                                ),
-                            )
-                        ),
-                    ),
+						
+					// Book a Meeting
+					const SizedBox(width: 10),
+					Container(
+						margin: const EdgeInsets.only(top: 10),
+						padding: const EdgeInsets.all(2),
+						decoration:  BoxDecoration(
+							color: const Color(0xFF077bd7),
+							borderRadius: BorderRadius.circular(20)
+						),
+						child: TextButton (
+							onPressed: () {
+								var s = "";
+							},
+							child: const Text(
+								"Book A Meeting",
+								style:  TextStyle(
+									color: Colors.white,
+									fontSize: 12
+								),
+							)
+						),
+					),
 					],
 				),
 				),
