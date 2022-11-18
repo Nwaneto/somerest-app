@@ -35,32 +35,16 @@ class _TopBarContentsState extends State<TopBarContents> {
 					child: Row (
 					mainAxisAlignment: MainAxisAlignment.start,
 					children: [
-					SizedBox(width: ResponsiveWidget.isMediumScreen(context) ? screenSize.width/40 : screenSize.width/6),
+					SizedBox(width: ResponsiveWidget.isMediumScreen(context) ? screenSize.width/40 : screenSize.width/25),
 					// Home page
 					Container(
 						margin: const EdgeInsets.only(top: 10),
-						child: Column(
-							children: const [
-								Text (
-									'Somerest',
-									style: TextStyle (
-										color: Colors.black,
-										fontSize: 20,
-										fontFamily: 'Raleway',
-										fontWeight: FontWeight.w900,
-									),
-								),
-
-								Text (
-									'CONSULTING LIMITED',
-									style: TextStyle (
-										color: Colors.black,
-										fontSize: 8,
-										fontFamily: 'Raleway',
-									),
-								),
-							],
-						)
+						child: Image.asset (
+								"assets/images/logo.png",
+								scale: 50,
+								fit: BoxFit.scaleDown,
+								filterQuality: FilterQuality.high,
+							)
 					),
 
 
@@ -234,7 +218,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 
 					// Submit CV
 					SizedBox(width: ResponsiveWidget.isLargeScreen(context)?  screenSize.width * 0.25
-                    : 40),
+					: 40),
 					Container(
 						margin: const EdgeInsets.only(top: 10),
 						padding: const EdgeInsets.all(2),
