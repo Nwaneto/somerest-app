@@ -12,27 +12,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ScrollController _scrollController = ScrollController();
-  double _scrollPosition = 0;
-  double _opacity = 0;
+	final ScrollController _scrollController = ScrollController();
+	final TextEditingController _messageController = TextEditingController();
+	final TextEditingController _nameController = TextEditingController();
+	final TextEditingController _emailController = TextEditingController();
+	final TextEditingController _subjectController = TextEditingController();
+	double _scrollPosition = 0;
+	double _opacity = 0;
 
-  _scrollListener() {
-	setState(() {
-	  _scrollPosition = _scrollController.position.pixels;
-	});
-  }
+	_scrollListener() {
+		setState(() {
+			_scrollPosition = _scrollController.position.pixels;
+		});
+	}
 
-  @override
-  void initState() {
-	_scrollController.addListener(_scrollListener);
-	super.initState();
-  }
+	@override
+	void initState() {
+		_scrollController.addListener(_scrollListener);
+		super.initState();
+	}
 
-  @override
-  Widget build(BuildContext context) {
-	var screenSize = MediaQuery.of(context).size;
+	@override
+	Widget build(BuildContext context) {
+		var screenSize = MediaQuery.of(context).size;
 
-	return Scaffold(
+		return Scaffold(
 		appBar: ResponsiveWidget.isSmallScreen(context)
 			? AppBar(
 				iconTheme: const IconThemeData(color: Color(0xFF077bd7)),
@@ -608,7 +612,9 @@ class _HomePageState extends State<HomePage> {
 							  :
 
 							  // For smaller screens
-							  Column(children: [
+							  Column(
+								mainAxisAlignment: MainAxisAlignment.start,
+								children: [
 								  Container(
 									  margin: const EdgeInsets.only(
 										  top: 70, bottom: 10),
@@ -707,20 +713,21 @@ class _HomePageState extends State<HomePage> {
 			// After covering that large amount of content, we move to the column for leaving messages to
 			// the support team.
 			Container(
-				  alignment: Alignment.topLeft,
-				  margin: const EdgeInsets.only(top: 30, bottom: 30),
-				  width: screenSize.width * 0.95,
-				  padding: const EdgeInsets.only(
-					  top: 10, bottom: 10, left: 50, right: 50),
-				  decoration: BoxDecoration(
+				alignment: Alignment.topLeft,
+				margin: const EdgeInsets.only(top: 30, bottom: 30),
+				width: screenSize.width * 0.95,
+				padding: const EdgeInsets.only(
+					top: 10, bottom: 10, left: 50, right: 50),
+					decoration: BoxDecoration(
 					border: Border.all(
-					  color: Colors.blueGrey,
-					  width: 2,
+						color: Colors.blueGrey,
+						width: 2,
 					),
 					borderRadius: const BorderRadius.all(Radius.circular(10)),
-				  ),
-				  child: Column(
+				),
+				child: Column(
 					mainAxisAlignment: MainAxisAlignment.start,
+					crossAxisAlignment: CrossAxisAlignment.start,
 					children: ResponsiveWidget.isLargeScreen(context)
 						? [
 							const Text("Leave a message",
@@ -728,25 +735,151 @@ class _HomePageState extends State<HomePage> {
 								style: TextStyle(
 									color: Colors.black,
 									fontSize: 18,
-									fontWeight: FontWeight.w700)),
+									fontWeight: FontWeight.w700
+								)
+							),
+
 							Container(
 								margin: const EdgeInsets.only(top: 40),
 								child: Row(
-								  children: [
-									Column(
-									  children: [
-										Container(
-										  padding: const EdgeInsets.all(30),
+								mainAxisAlignment: MainAxisAlignment.spaceBetween,
+								children: [
+									SizedBox(
+										width: screenSize.width * 0.43,
+										child: TextField(
+											cursorColor: Colors.blue,
+											controller: _nameController,
+											decoration: const InputDecoration(
+												labelText: "Name",
+												hintText: "Required",
+												border: OutlineInputBorder(
+													borderRadius: BorderRadius.all(
+														Radius.circular(10)
+													),
+
+													borderSide: BorderSide(
+														color: Colors.blue,
+														width: 1.0,
+													)
+												)
+											),
 										)
-									  ],
+									),
+
+									SizedBox(
+										width: screenSize.width * 0.43,
+										child: TextField(
+											cursorColor: Colors.blue,
+											controller: _emailController,
+											decoration: const InputDecoration(
+												labelText: "Email",
+												hintText: "Required",
+												border: OutlineInputBorder(
+													borderRadius: BorderRadius.all(
+														Radius.circular(10)
+													),
+
+													borderSide: BorderSide(
+														color: Colors.blue,
+														width: 1.0,
+													)
+												)
+											),
+										)
 									)
-								  ],
-								))
-						  ]
+								],
+								)
+							),
+
+
+							// The subject field
+							Container(
+								margin: const EdgeInsets.only(top: 20),
+								width: screenSize.width * 0.9,
+								child: TextField(
+									cursorColor: Colors.blue,
+									controller: _subjectController,
+									decoration: const InputDecoration(
+										labelText: "Subject",
+										hintText: "Required",
+										border: OutlineInputBorder(
+											borderRadius: BorderRadius.all(
+												Radius.circular(10)
+											),
+
+											borderSide: BorderSide(
+												color: Colors.blue,
+												width: 1.0,
+											)
+										)
+									),
+								)
+							),
+
+							// The Message Body
+							Container(
+								margin: const EdgeInsets.only(top: 20),
+								height: screenSize.height * 0.25,
+								width: screenSize.width * 0.9,
+								child: TextField(
+									maxLines: 12,
+									cursorColor: Colors.blue,
+									controller: _messageController,
+									decoration: const InputDecoration(
+										labelText: "Your Message",
+										hintText: "Required",
+										border: OutlineInputBorder(
+											borderRadius: BorderRadius.all(
+												Radius.circular(10)
+											),
+
+											borderSide: BorderSide(
+												color: Colors.blue,
+												width: 1.0,
+											)
+										)
+									),
+								)
+							),
+
+							Container(
+								padding: const EdgeInsets.all(10),
+								margin: const EdgeInsets.only(top: 30),
+								decoration: const BoxDecoration(
+									color: Colors.blue,
+									borderRadius: BorderRadius.all(Radius.circular(10))
+								),
+								child: TextButton(
+									onPressed: () {
+										var name = _nameController.text;
+										var email = _emailController.text;
+										var subject = _subjectController.text;
+										var message = _messageController.text;
+
+										// After everything, reorder the state of the widget
+										setState(() {
+											_nameController.text = "";
+											_emailController.text = "";
+											_subjectController.text = "";
+											_messageController.text = "";
+										});
+									},
+							
+									child: const Text(
+										"Submit",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											fontSize: 18,
+											color: Colors.white
+										)
+									)
+								),
+							)
+						]
 
 						// For smaller screens
 						: [],
-				  )),
+				)),
 
 			// Next is the footer of the website.
 			Container(
@@ -758,12 +891,14 @@ class _HomePageState extends State<HomePage> {
 					  // On larger screens...
 					  ? Row(
 						  mainAxisAlignment: MainAxisAlignment.center,
+						  crossAxisAlignment: CrossAxisAlignment.stretch,
 						  children: [
 							SizedBox(
 								width: screenSize.width * 0.25,
 								child: Column(
-								  mainAxisAlignment: MainAxisAlignment.start,
-								  children: [
+									crossAxisAlignment: CrossAxisAlignment.stretch,
+									mainAxisAlignment: MainAxisAlignment.start,
+									children: [
 									Container(
 										margin:const EdgeInsets.only(bottom: 10),
 										child: const Text(
@@ -804,8 +939,9 @@ class _HomePageState extends State<HomePage> {
 								width: screenSize.width * 0.25,
 								margin: const EdgeInsets.only(left: 20),
 								child: Column(
-								  mainAxisAlignment: MainAxisAlignment.start,
-								  children: [
+									crossAxisAlignment: CrossAxisAlignment.stretch,
+									mainAxisAlignment: MainAxisAlignment.start,
+									children: [
 									Container(
 										margin:
 											const EdgeInsets.only(bottom: 10),
@@ -871,7 +1007,9 @@ class _HomePageState extends State<HomePage> {
 										alignment: Alignment.topLeft,
 										width: screenSize.width * 0.1,
 										margin: const EdgeInsets.only(left: 20),
-										child: Column(children: [
+										child: Column(
+											crossAxisAlignment: CrossAxisAlignment.stretch,
+											children: [
 											Container(
 												margin: const EdgeInsets.only(bottom: 10),
 												child: const Text("Company",
@@ -907,8 +1045,8 @@ class _HomePageState extends State<HomePage> {
 										width: screenSize.width * 0.10,
 										margin: const EdgeInsets.only(left: 20),
 										child: Column(
-											mainAxisAlignment:
-												MainAxisAlignment.start,
+											mainAxisAlignment: MainAxisAlignment.start,
+											crossAxisAlignment: CrossAxisAlignment.stretch,
 											children: [
 											  Container(
 												  margin: const EdgeInsets.only(
@@ -940,7 +1078,7 @@ class _HomePageState extends State<HomePage> {
 										  color: Colors.white,
 										  fontWeight: FontWeight.w900),
 									),
-									Row(children: [
+									Row(children: const [
 									//   IconButton(
 									//       onPressed: () {},
 									//       icon: Image.asset(""))

@@ -86,8 +86,12 @@ class MenuDrawer extends StatelessWidget {
 				),
 				),
 
+
+
+				// Submit your CV
 				Container(
 					padding: const EdgeInsets.all(5),
+					width: screenSize.width * 0.9,
 					decoration:  BoxDecoration(
 						color: const Color(0xFF077bd7),
 						borderRadius: BorderRadius.circular(10)
@@ -110,6 +114,7 @@ class MenuDrawer extends StatelessWidget {
 				// Login button
 				Container(
 					margin: const EdgeInsets.only(top: 10),
+					width: screenSize.width * 0.9,
 					padding: const EdgeInsets.all(5),
 					decoration:  BoxDecoration(
 						color: const Color(0xFF077bd7),
@@ -133,6 +138,7 @@ class MenuDrawer extends StatelessWidget {
 				// Book a Meeting
 				Container(
 					margin: const EdgeInsets.only(top: 10),
+					width: screenSize.width * 0.9,
 					padding: const EdgeInsets.all(5),
 					decoration:  BoxDecoration(
 						color: const Color(0xFF077bd7),
