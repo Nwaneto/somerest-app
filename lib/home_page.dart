@@ -141,11 +141,13 @@ class _HomePageState extends State<HomePage> {
 							  style: TextStyle(color: Colors.white),
 							))),
 					Container(
-						margin: const EdgeInsets.only(top: 10),
+						margin: const EdgeInsets.only(top: 50),
 						child: const Text(
-						  'Discover Our Services',
-						  style: TextStyle(
-							  fontSize: 20, fontWeight: FontWeight.w900),
+							'Discover Our Services',
+							style: TextStyle(
+								fontSize: 20,
+								fontWeight: FontWeight.w900
+							),
 						)),
 
 						const SizedBox(
@@ -160,7 +162,98 @@ class _HomePageState extends State<HomePage> {
 
 						// For smaller screens. Basically only mobile phones.
 						Column(
+							mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+							children: [
+								Container (
+									margin: const EdgeInsets.only(top: 40),
+									width: screenSize.width*0.9,
+									child: Column(
+									children: [
+										Image.asset(
+											"assets/images/image5.png",
+											fit: BoxFit.scaleDown,
+										),
 
+										const SizedBox(height: 10),
+
+										const Text(
+											"What is our mission?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Text(
+											"SOMEREST seeks to change the perception of the recruitment and support services of businesses in Nigeria by focusing on:\n · Integrity\n · Trust\n · Specialist Expertise\n · Staff Retention",
+											style: TextStyle(
+												color: Color(0xFF5B5B5B),
+											)
+										),
+									])
+								),
+
+								Container (
+									margin: const EdgeInsets.only(top: 40),
+									width: screenSize.width*0.9,
+									child: Column(
+									children: [
+										Image.asset(
+											"assets/images/image1.png",
+											fit: BoxFit.scaleDown,
+										),
+
+										const SizedBox(height: 5),
+
+										const Text(
+											"What is our approach?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Text(
+											"We ascertain your exact requirements and value system in order to save time and present the right people and resources on time — every time. Therefore, it is imperative to schedule a client visit for the first time per request.",
+											style: TextStyle(
+												color: Color(0xFF5B5B5B),
+											)
+										),
+									])
+								),
+
+								Container(
+									margin: const EdgeInsets.only(top: 40),
+									width: screenSize.width*0.90,
+									child: Column(
+									children: [
+										Image.asset(
+											"assets/images/image14.png",
+											fit: BoxFit.scaleDown,
+										),
+
+										const SizedBox(height: 10),
+
+										const Text(
+											"What is our vision?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Text(
+											"SOMEREST is determined to be a leading specialist recruitment agency and valuable business support company to our clientele.",
+											style: TextStyle(
+												color: Color(0xFF5B5B5B),
+											)
+										),
+									])
+								),
+							]
 						)
 
 						:
@@ -176,8 +269,29 @@ class _HomePageState extends State<HomePage> {
 										Image.asset(
 											"assets/images/image5.png",
 											fit: BoxFit.scaleDown,
-										)]
-									)
+										),
+
+										const SizedBox(height: 10),
+
+										const Text(
+											"What is our mission?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Padding(
+											padding: EdgeInsetsDirectional.all(10),
+											child: Text(
+												"SOMEREST seeks to change the perception of the recruitment and support services of businesses in Nigeria by focusing on:\n · Integrity\n · Trust\n · Specialist Expertise\n · Staff Retention",
+												style: TextStyle(
+													color: Color(0xFF5B5B5B),
+												)
+											)
+										),
+									])
 								),
 
 								SizedBox(
@@ -187,8 +301,29 @@ class _HomePageState extends State<HomePage> {
 										Image.asset(
 											"assets/images/image1.png",
 											fit: BoxFit.scaleDown,
-										)]
-									)
+										),
+
+										const SizedBox(height: 5),
+
+										const Text(
+											"What is our approach?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Padding(
+											padding: EdgeInsetsDirectional.all(10),
+											child: Text(
+												"We ascertain your exact requirements and value system in order to save time and present the right people and resources on time — every time. Therefore, it is imperative to schedule a client visit for the first time per request.",
+												style: TextStyle(
+													color: Color(0xFF5B5B5B),
+												)
+											)
+										),
+									])
 								),
 
 								SizedBox(
@@ -198,8 +333,29 @@ class _HomePageState extends State<HomePage> {
 										Image.asset(
 											"assets/images/image14.png",
 											fit: BoxFit.scaleDown,
-										)]
-									)
+										),
+
+										const SizedBox(height: 10),
+
+										const Text(
+											"What is our vision?",
+											style: TextStyle(
+												fontWeight: FontWeight.w900,
+												fontSize: 23,
+												color: Colors.blue
+											)
+										),
+
+										const Padding(
+											padding: EdgeInsetsDirectional.all(10),
+											child: Text(
+												"SOMEREST is determined to be a leading specialist recruitment agency and valuable business support company to our clientele.",
+												style: TextStyle(
+													color: Color(0xFF5B5B5B),
+												)
+											)
+										),
+									])
 								),
 							],
 						)
@@ -207,7 +363,7 @@ class _HomePageState extends State<HomePage> {
 				)
 			),
 
-			// Let's begin to make the list of children, innit?
+			// Let's begin to make the list of testimonies, right?
 			Container(
 				  margin: const EdgeInsets.only(top: 40, bottom: 20),
 				  padding: const EdgeInsets.all(5),
