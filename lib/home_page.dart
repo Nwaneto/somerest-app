@@ -713,8 +713,7 @@ class _HomePageState extends State<HomePage> {
 			// After covering that large amount of content, we move to the column for leaving messages to
 			// the support team.
 			Container(
-				alignment: Alignment.topLeft,
-				margin: const EdgeInsets.only(top: 30, bottom: 30),
+				margin: const EdgeInsets.only(top: 30, bottom: 30, left: 20,  right: 20),
 				width: screenSize.width * 0.95,
 				padding: ResponsiveWidget.isSmallScreen(context) ? const EdgeInsets.only(top: 10, bottom: 10, left:  20, right: 20) : const EdgeInsets.only(top: 10, bottom: 10, left:  50, right: 50),
 				decoration: BoxDecoration(
