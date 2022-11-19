@@ -1178,15 +1178,15 @@ class _HomePageState extends State<HomePage> {
 			// Next is the footer of the website.
 			Container(
 				  color: Colors.black,
-				  height: screenSize.height * 0.25,
+				  height: ResponsiveWidget.isSmallScreen(context) ? null : screenSize.height * 0.25,
 				  padding: const EdgeInsets.all(10),
 				  child: !ResponsiveWidget.isSmallScreen(context)
 
 					  // On larger screens...
 					  ? Row(
-						  mainAxisAlignment: MainAxisAlignment.center,
-						  crossAxisAlignment: CrossAxisAlignment.stretch,
-						  children: [
+							mainAxisAlignment: MainAxisAlignment.center,
+							crossAxisAlignment: CrossAxisAlignment.stretch,
+							children: [
 							SizedBox(
 								width: screenSize.width * 0.25,
 								child: Column(
@@ -1364,8 +1364,8 @@ class _HomePageState extends State<HomePage> {
 							Container(
 								margin: const EdgeInsets.only(left: 20),
 								child: Column(
-								  mainAxisAlignment: MainAxisAlignment.start,
-								  children: [
+								mainAxisAlignment: MainAxisAlignment.start,
+								children: [
 									const Text(
 									  'Get to know us better',
 									  style: TextStyle(
@@ -1377,13 +1377,230 @@ class _HomePageState extends State<HomePage> {
 									//       onPressed: () {},
 									//       icon: Image.asset(""))
 									])
-								  ],
-								))
+								])
+							)
 						  ],
 						)
 
-					  // On smaller screens.
-						: Column())
+						:
+						
+						// On smaller screens.						
+						Column(
+							mainAxisAlignment: MainAxisAlignment.center,
+							crossAxisAlignment: CrossAxisAlignment.stretch,
+							children: [
+								Row(
+									children: [
+										SizedBox(
+											width: screenSize.width * 0.50,
+											child: Column(
+												crossAxisAlignment: CrossAxisAlignment.stretch,
+												mainAxisAlignment: MainAxisAlignment.start,
+												children: [
+												Container(
+													margin:const EdgeInsets.only(bottom: 10),
+													child: const Text(
+														"Somerest Consulting Limited",
+														style: TextStyle(
+														color: Colors.white,
+														fontWeight: FontWeight.w900,
+														)
+													)
+												),
+												
+												const Text(
+													'WW28 Entrance 3, Tafawa Balewa Square complex, Lagos Island, Lagos State, Nigera.',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+												
+												const Text('contact@somerest.com.ng',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+												
+												const Text(
+													'Somerest Consulting Services Nigeria Limited © 2022',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+											],
+											)),
+										
+										Container(
+											alignment: Alignment.centerLeft,
+											width: screenSize.width * 0.388,
+											margin: const EdgeInsets.only(left: 20),
+											child: Column(
+												crossAxisAlignment: CrossAxisAlignment.stretch,
+												mainAxisAlignment: MainAxisAlignment.start,
+												children: [
+												Container(
+													margin:
+														const EdgeInsets.only(bottom: 10),
+													child: const Text("Services",
+														style: TextStyle(
+															color: Colors.white,
+															fontWeight: FontWeight.w900,
+														)
+													)
+												),
+
+												const Text('Recruitment',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+
+												const Text('Project Management',
+													style: TextStyle (
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+
+												const Text('ICT',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+
+												const Text(
+													'Background Check and Verification',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+
+												const Text('Branding & Digital Services',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+
+												const Text('Event Planning',
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 13
+													)
+												),
+											],
+										)),
+										
+									],
+								),
+
+								Row(
+								  mainAxisAlignment: MainAxisAlignment.start,
+								  children: [
+									Container(
+										alignment: Alignment.topLeft,
+										width: screenSize.width * 0.50,
+										margin: const EdgeInsets.only(top: 50),
+										child: Column(
+											crossAxisAlignment: CrossAxisAlignment.start,
+											children: [
+											Container(
+												margin: const EdgeInsets.only(bottom: 10),
+												child: const Text("Company",
+												style: TextStyle(
+													color: Colors.white,
+													fontWeight: FontWeight.w900,
+												)
+											)
+										),
+										
+										const Text('About',
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+										
+										const Text('Services',
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+										
+										const Text('Find a Job',
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										)
+										])),
+									Container(
+										width: screenSize.width * 0.20,
+										margin: const EdgeInsets.only(left: 20, top: 30),
+										child: Column(
+											mainAxisAlignment: MainAxisAlignment.start,
+											crossAxisAlignment: CrossAxisAlignment.start,
+											children: [
+											  Container(
+												  margin: const EdgeInsets.only(
+													  bottom: 20),
+												  child: const Text("Support",
+													  style: TextStyle(
+														color: Colors.white,
+														fontWeight:
+															FontWeight.w900,
+													  ))),
+											  const Text('Contact Us',
+												  style: TextStyle(
+													  color: Colors.white,
+													  fontSize: 13
+													)),
+											])),
+								]),
+
+								Container(
+								margin: const EdgeInsets.only(top: 50),
+								child: Column(
+								mainAxisAlignment: MainAxisAlignment.start,
+								crossAxisAlignment: CrossAxisAlignment.start,
+								children: [
+									const Text(
+									  'Get to know us better',
+									  style: TextStyle(
+										  color: Colors.white,
+										  fontWeight: FontWeight.w900),
+									),
+									Row(children: const [
+									//   IconButton(
+									//       onPressed: () {},
+									//       icon: Image.asset(""))
+									])
+								])
+							)
+							]
+						)),
+
+						Container(
+							width: screenSize.width,
+							color: Colors.blue,
+							padding: const EdgeInsets.only(left: 10,  right: 10, top: 5, bottom: 5),
+							child: const Text (
+								"Powered By System Works Solutions",
+								textAlign: TextAlign.center,
+
+								style: TextStyle(
+									color: Colors.white,
+									fontSize: 12
+								)
+							),
+						)
 					]
 				)
 			)
