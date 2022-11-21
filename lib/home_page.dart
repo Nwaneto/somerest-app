@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:somerest/main_page.dart';
+import 'package:somerest/menu_drawer.dart';
 import 'package:somerest/responsive.dart';
+import 'package:somerest/top_bar_contents.dart';
 
 import 'about_page.dart';
 
@@ -16,14 +18,6 @@ class _HomePageState extends State<HomePage> {
 	double _scrollPosition = 0;
 	double _opacity = 0;
 	String _current = "MainPage";
-
-
-	final List _isHovering = [
-		false,
-		false,
-		false,
-		false
-	];
 
 	final List _isSelected = [
 		false,
@@ -56,6 +50,7 @@ class _HomePageState extends State<HomePage> {
 		_scaffold =  Scaffold(
 
 			appBar: ResponsiveWidget.isSmallScreen(context)
+			
 			? 
 			
 			AppBar(
@@ -75,457 +70,19 @@ class _HomePageState extends State<HomePage> {
 				preferredSize: Size(screenSize.width, 60),
 				child: Container(
 				color: Colors.white.withOpacity(0.5),
-				child: 
-				// Desktop view
-				Flex (
-					mainAxisSize: MainAxisSize.max,
-					direction: Axis.vertical,
-					children: [
-					Expanded(
-					child: Row (
-					mainAxisAlignment: MainAxisAlignment.start,
-					children: [
-					SizedBox(width: ResponsiveWidget.isMediumScreen(context) ? screenSize.width/40 : screenSize.width/25),
-					// Home page
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						child: Image.asset (
-								"assets/images/logo.png",
-								scale: 50,
-								fit: BoxFit.scaleDown,
-								filterQuality: FilterQuality.high,
-							)
-					),
-
-
-					// Home
-					const SizedBox(width: 60),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[0] = true
-								: _isHovering[0] = false;
-						});
-						},
-						onTap: () {
-							switchToPage(0);
-                            setState(() {});
-						},
-						child: Column (
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							key: const GlobalObjectKey("main-navbar-home"),
-							'HOME',
-							style: TextStyle(
-								color: _isHovering[0]
-									? const Color(0xFF077bd7)
-									: Colors.grey,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[0],
-							child: Container (
-
-								height: 2,
-								width: 20,
-								color: const Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
-
-
-
-					// About Us
-					const SizedBox(width: 20),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[1] = true
-								: _isHovering[1] = false;
-						});
-						},
-						onTap: () {
-							switchToPage(1);
-						},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							'ABOUT US',
-							style: TextStyle(
-								color: _isHovering[1]
-									? Color(0xFF077bd7)
-									: Colors.grey,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[1],
-							child: Container(
-								height: 2,
-								width: 20,
-								color: const Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
-
-
-
-					// Services
-					const SizedBox(width: 20),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[2] = true
-								: _isHovering[2] = false;
-						});
-						},
-						onTap: () {},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text(
-							'SERVICES',
-							style: TextStyle(
-								color: _isHovering[2]
-									? Color(0xFF077bd7)
-									: Colors.grey,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[2],
-							child: Container(
-								height: 2,
-								width: 20,
-								color:const Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
-
-
-
-					// Contact
-					const SizedBox(width: 20),
-					InkWell(
-						onHover: (value) {
-						setState(() {
-							value
-								? _isHovering[3] = true
-								: _isHovering[3] = false;
-						});
-						},
-						onTap: () {},
-						child: Column(
-						mainAxisSize: MainAxisSize.min,
-						children: [
-							const SizedBox(height: 10),
-							Text (
-							'CONTACT',
-							style: TextStyle(
-								color: _isHovering[3]
-									? Color(0xFF077bd7)
-									: Colors.grey,
-								fontSize: 16
-							),
-							),
-							const SizedBox(height: 5),
-							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[3],
-							child: Container(
-								height: 2,
-								width: 20,
-								color: Color(0xFF051441),
-							),
-							)
-						],
-						),
-					),
-
-
-					// Submit CV
-					SizedBox(width: ResponsiveWidget.isLargeScreen(context)?  screenSize.width * 0.25
-					: 40),
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
-						),
-						child: TextButton (
-							onPressed: () {
-								var s = "";
-							},
-							child: const Text(
-								"Submit CV",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
-						),
-					),
-
-
-					// Login
-					const SizedBox(width: 10),
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
-						),
-						child: TextButton (
-							onPressed: () {
-								var s = "";
-							},
-							child: const Text(
-								"Login",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
-						),
-					),
-
-						
-					// Book a Meeting
-					const SizedBox(width: 10),
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
-						),
-						child: TextButton (
-							onPressed: () {
-								var s = "";
-							},
-							child: const Text(
-								"Book A Meeting",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
-						),
-					),
-					],
-				),
-				),
-
-			]),
-
-		),
+				child: const TopBarContents()
+			),
 			
 			),
 
-			drawer: Drawer(
-				child: Container (
-				color: Colors.white,
-				child: Padding(
-				padding: const EdgeInsets.all(16.0),
+			drawer: const MenuDrawer(),
+
+			body: SingleChildScrollView(
+				controller: _scrollController,
+				physics: const ClampingScrollPhysics(),
 				child: Column(
-					crossAxisAlignment: CrossAxisAlignment.start,
-					mainAxisAlignment: MainAxisAlignment.start,
 					children: [
-						// Home
-						InkWell(
-						onTap: () {},
-						child: const Text(
-							'Home',
-							style: TextStyle(color: Color(0xFF077bd7), fontSize: 18),
-						),
-						),
-						Padding(
-						padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-						child: Divider(
-							color: Colors.blueGrey.shade400,
-							thickness: 2,
-						),
-						),
-
-
-						// About Us
-						InkWell(
-						onTap: () {},
-						child: const Text(
-							'About Us',
-							style: TextStyle(color: Color(0xFF077bd7), fontSize: 18),
-						),
-						),
-						Padding(
-						padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-						child: Divider(
-							color: Colors.blueGrey.shade400,
-							thickness: 2,
-						),
-						),
-
-
-						// Services
-						InkWell(
-						onTap: () {},
-						child: const Text(
-							'Services',
-							style:  TextStyle(color: Color(0xFF077bd7), fontSize: 18),
-						),
-						),
-						Padding(
-						padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-						child: Divider(
-							color: Colors.blueGrey.shade400,
-							thickness: 2,
-						),
-						),
-
-
-						// Contact 
-						InkWell(
-						onTap: () {},
-						child: const Text(
-							'Contact',
-							style:  TextStyle(color: Color(0xFF077bd7), fontSize: 18),
-						),
-						),
-						const Padding(
-						padding: EdgeInsets.only(top: 40.0, bottom: 40.0),
-						child: Divider(
-							color: Colors.transparent,
-							thickness: 2,
-						),
-						),
-
-
-
-						// Submit your CV
-						Container(
-							padding: const EdgeInsets.all(5),
-							width: screenSize.width * 0.9,
-							decoration:  BoxDecoration(
-								color: const Color(0xFF077bd7),
-								borderRadius: BorderRadius.circular(10)
-							),
-							child: TextButton (
-								onPressed: () {
-									var s = "";
-								},
-								child: const Text(
-									"Submit CV",
-									style:  TextStyle(
-										color: Colors.white,
-										fontSize: 18
-									),
-								)
-							),
-						),
-
-
-						// Login button
-						Container(
-							margin: const EdgeInsets.only(top: 10),
-							width: screenSize.width * 0.9,
-							padding: const EdgeInsets.all(5),
-							decoration:  BoxDecoration(
-								color: const Color(0xFF077bd7),
-								borderRadius: BorderRadius.circular(10)
-							),
-							child: TextButton (
-								onPressed: () {
-									var s = "";
-								},
-								child: const Text(
-									"Login",
-									style:  TextStyle(
-										color: Colors.white,
-										fontSize: 18
-									),
-								)
-							),
-						),
-
-
-						// Book a Meeting
-						Container(
-							margin: const EdgeInsets.only(top: 10),
-							width: screenSize.width * 0.9,
-							padding: const EdgeInsets.all(5),
-							decoration:  BoxDecoration(
-								color: const Color(0xFF077bd7),
-								borderRadius: BorderRadius.circular(10)
-							),
-							child: TextButton (
-								onPressed: () {
-									var s = "";
-								},
-								child: const Text(
-									"Book A Meeting",
-									style:  TextStyle(
-										color: Colors.white,
-										fontSize: 18
-									),
-								)
-							),
-						),
-
-						const Expanded(
-						child: Align(
-						alignment: Alignment.bottomCenter,
-						child: Text(
-							'Powered By System Works Solutions',
-							style: TextStyle(
-							color: Colors.blue,
-							fontSize: 14,
-							),
-						),
-						),
-					)
-					],
-				),
-			),
-				),
-			),
-
-
-		body: SingleChildScrollView(
-			controller: _scrollController,
-			physics: const ClampingScrollPhysics(),
-			child: Column(
-				children: [
-					child,
+						const MainPage(),
 
 					// Next is the footer of the website.
 					Container(
@@ -999,7 +556,7 @@ class _HomePageState extends State<HomePage> {
 		body.children[0] = page;
 	
 		setState(() {
-			
+			body.children[0] = page;
 		});
 	 }
 }
