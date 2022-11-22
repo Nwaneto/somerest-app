@@ -33,8 +33,8 @@ class AboutPageState extends State<AboutPage> {
 	@override
 	Widget build(BuildContext context) {
 		var screenSize = MediaQuery.of(context).size;
-		return Scaffold(
 
+		return Scaffold(
 			appBar: ResponsiveWidget.isSmallScreen(context)
 			
 			? 
@@ -117,6 +117,38 @@ class AboutPageState extends State<AboutPage> {
 								)
 							],
 						)
+					),
+
+					// Next is the place which contains the 
+					Row(
+						mainAxisAlignment: MainAxisAlignment.center,
+						children: [
+						Text(
+							"Somerest Consulting Limited",
+							style: TextStyle(
+								fontSize: ResponsiveWidget.isSmallScreen(context) ? 23 : 29,
+								fontWeight: FontWeight.w900,
+								color: Colors.black,
+							)
+						),
+
+						Text(
+							".",
+							style: TextStyle(
+								fontSize: ResponsiveWidget.isSmallScreen(context) ? 23 : 29,
+								fontWeight: FontWeight.w900,
+								color: Colors.red,
+							)
+						)
+					]),
+
+					SizedBox(
+						width: screenSize.width * 0.15,
+						child: const Divider(
+							height: 10,
+							thickness: 4,
+							color: Colors.blue
+						),
 					),
 
 					// For some reason this page has a support conversation box so... let's put that here too.
