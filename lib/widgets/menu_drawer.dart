@@ -21,7 +21,9 @@ class MenuDrawer extends StatelessWidget {
 			children: [
 				// Home
 				InkWell(
-				onTap: () {},
+				onTap: () {
+					Navigator.of(context).pushNamed("/");
+				},
 				child: const Text(
 					'Home',
 					style: TextStyle(color: Color(0xFF077bd7), fontSize: 18),
@@ -38,7 +40,9 @@ class MenuDrawer extends StatelessWidget {
 
 				// About Us
 				InkWell(
-				onTap: () {},
+				onTap: () {
+					Navigator.of(context).pushNamed("/about");
+				},
 				child: const Text(
 					'About Us',
 					style: TextStyle(color: Color(0xFF077bd7), fontSize: 18),
@@ -55,7 +59,9 @@ class MenuDrawer extends StatelessWidget {
 
 				// Services
 				InkWell(
-				onTap: () {},
+				onTap: () {
+					Navigator.of(context).pushNamed("/services");
+				},
 				child: const Text(
 					'Services',
 					style:  TextStyle(color: Color(0xFF077bd7), fontSize: 18),
@@ -72,7 +78,9 @@ class MenuDrawer extends StatelessWidget {
 
 				// Contact 
 				InkWell(
-				onTap: () {},
+				onTap: () {
+					Navigator.of(context).pushNamed("/contact");
+				},
 				child: const Text(
 					'Contact',
 					style:  TextStyle(color: Color(0xFF077bd7), fontSize: 18),

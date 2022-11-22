@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:somerest/responsive.dart';
+import 'package:somerest/widgets/responsive.dart';
 
 class TopBarContents extends StatefulWidget {
+	TopBarContents({
+		super.key
+	});
 
-  const TopBarContents({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _TopBarContentsState createState() => _TopBarContentsState();
+	@override
+	_TopBarContentsState createState() => _TopBarContentsState();
 }
 
 class _TopBarContentsState extends State<TopBarContents> {
-  final List _isHovering = [
-	false,
-	false,
-	false,
-	false,
-	false,
-	false,
-	false
-  ];
+	final List _isHovering = [
+		false,
+		false,
+		false,
+		false
+	];
 
-  @override
-  Widget build(BuildContext context) {
+	final int page = 0;
+
+	@override
+	Widget build(BuildContext context) {
 	var screenSize = MediaQuery.of(context).size;
 
 	return Container(
@@ -58,7 +57,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 								: _isHovering[0] = false;
 						});
 						},
-						onTap: () {},
+						onTap: () {
+							if(page != 0) {
+								Navigator.of(context).pushNamed("/");
+							}
+						},
 						child: Column (
 						mainAxisSize: MainAxisSize.min,
 						children: [
@@ -66,7 +69,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 							Text(
 							'HOME',
 							style: TextStyle(
-								color: _isHovering[0]
+								color: _isHovering[0] || page == 0
 									? Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
@@ -74,12 +77,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 							),
 							const SizedBox(height: 5),
 							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[0],
+							maintainAnimation: page ==0,
+							maintainState: page == 0,
+							maintainSize: page == 0,
+							visible: _isHovering[0] || page == 0,
 							child: Container (
-
 								height: 2,
 								width: 20,
 								color: const Color(0xFF051441),
@@ -101,7 +103,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 								: _isHovering[1] = false;
 						});
 						},
-						onTap: () {},
+						onTap: () {
+							if(page != 1) {
+								Navigator.of(context).pushNamed("/about");
+							}
+						},
 						child: Column(
 						mainAxisSize: MainAxisSize.min,
 						children: [
@@ -109,18 +115,18 @@ class _TopBarContentsState extends State<TopBarContents> {
 							Text(
 							'ABOUT US',
 							style: TextStyle(
-								color: _isHovering[1]
-									? Color(0xFF077bd7)
+								color: _isHovering[1] || page == 1
+									? const Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
 							),
 							),
 							const SizedBox(height: 5),
 							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[1],
+							maintainAnimation: page ==1,
+							maintainState: page == 1,
+							maintainSize: page == 1,
+							visible: _isHovering[1] || page ==1,
 							child: Container(
 								height: 2,
 								width: 20,
@@ -143,7 +149,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 								: _isHovering[2] = false;
 						});
 						},
-						onTap: () {},
+						onTap: () {
+							if(page != 2) {
+								Navigator.of(context).pushNamed("/services");
+							}
+						},
 						child: Column(
 						mainAxisSize: MainAxisSize.min,
 						children: [
@@ -151,7 +161,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 							Text(
 							'SERVICES',
 							style: TextStyle(
-								color: _isHovering[2]
+								color: _isHovering[2] || page  == 2
 									? Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
@@ -159,10 +169,10 @@ class _TopBarContentsState extends State<TopBarContents> {
 							),
 							const SizedBox(height: 5),
 							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[2],
+							maintainAnimation: page ==2,
+							maintainState: page == 2,
+							maintainSize: page == 2,
+							visible: _isHovering[2] || page == 2,
 							child: Container(
 								height: 2,
 								width: 20,
@@ -185,7 +195,11 @@ class _TopBarContentsState extends State<TopBarContents> {
 								: _isHovering[3] = false;
 						});
 						},
-						onTap: () {},
+						onTap: () {
+							if(page != 3) {
+								Navigator.of(context).pushNamed("/contact");
+							}
+						},
 						child: Column(
 						mainAxisSize: MainAxisSize.min,
 						children: [
@@ -193,7 +207,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 							Text (
 							'CONTACT',
 							style: TextStyle(
-								color: _isHovering[3]
+								color: _isHovering[3] || page == 3
 									? Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
@@ -201,10 +215,10 @@ class _TopBarContentsState extends State<TopBarContents> {
 							),
 							const SizedBox(height: 5),
 							Visibility(
-							maintainAnimation: true,
-							maintainState: true,
-							maintainSize: true,
-							visible: _isHovering[3],
+							maintainAnimation: page ==1,
+							maintainState: page == 1,
+							maintainSize: page == 1,
+							visible: _isHovering[3] || page == 3,
 							child: Container(
 								height: 2,
 								width: 20,
