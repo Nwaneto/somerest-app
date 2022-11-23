@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:somerest/widgets/book_meeting.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
 import 'package:somerest/widgets/responsive.dart';
 import 'package:somerest/topbar/home.dart';
@@ -678,6 +679,7 @@ class _HomePageState extends State<HomePage> {
 										mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 										mainAxisSize: MainAxisSize.max,
 										children: [
+
 										ResponsiveWidget.isLargeScreen(context)
 											?
 
@@ -705,95 +707,24 @@ class _HomePageState extends State<HomePage> {
 														),
 													)
 													]),
-													Container(
-														margin: const EdgeInsets.only(left: 40),
-														padding: const EdgeInsets.all(40),
-														width: screenSize.width * 0.3,
-														color: Colors.blue,
-														alignment: Alignment.centerLeft,
-														child: Column(
-															mainAxisAlignment:
-																MainAxisAlignment.start,
-															children: [
-															Row(children: [
-																Image.asset(
-																"assets/images/facial1.png",
-																scale: 1.4,
-																),
-																Image.asset(
-																"assets/images/facial2.png",
-																scale: 1.4,
-																),
-																Image.asset(
-																"assets/images/facial3.png",
-																scale: 1.4,
-																)
-															]),
-															Container(
-																margin: const EdgeInsets.only(
-																	top: 20),
-																child: const Text(
-																"Let's book you an appointment",
-																textAlign: TextAlign.left,
-																style: TextStyle(
-																	fontSize: 18,
-																	color: Colors.white,
-																	fontWeight:
-																		FontWeight.w700),
-																),
-															),
-															Container(
-																margin: const EdgeInsets.only(
-																	top: 50),
-																child: const Text(
-																"We'd love to answer your questions. Tell us your needs and we'll contact you shortly.",
-																textAlign: TextAlign.left,
-																style: TextStyle(
-																	color: Colors.white,
-																	fontWeight:
-																		FontWeight.w500),
-																),
-															),
-															Container(
-																margin: const EdgeInsets.only(
-																	top: 80),
-																width: screenSize.width * 0.09,
-																decoration: BoxDecoration(
-																	border: Border.all(
-																	color: Colors.white,
-																	width: 2,
-																	),
-																	borderRadius:
-																		const BorderRadius.all(
-																			Radius.circular(
-																				300))),
-																child: TextButton(
-																	onPressed: () => {},
-																	child: const Text(
-																	'Book a meeting',
-																	textAlign:
-																		TextAlign.center,
-																	style: TextStyle(
-																		color: Colors.white,
-																		fontSize: 10),
-																	)),
-															)
-															]))
+
+													BookMeeting()
 												]))
 											:
 
 											// For smaller screens
-											Column(
+											Column (
 												mainAxisAlignment: MainAxisAlignment.start,
 												children: [
+
 												Container(
-													margin: const EdgeInsets.only(
-														top: 70, bottom: 10),
+													margin: const EdgeInsets.only(top: 70, bottom: 10),
 													height: screenSize.width * 0.9,
 													child: Image.asset(
 														"assets/images/image9.png",
 														fit: BoxFit.scaleDown,
-													)),
+												)),
+
 												SizedBox(
 													width: screenSize.width * 0.7,
 													child: const Text(
@@ -802,91 +733,22 @@ class _HomePageState extends State<HomePage> {
 														style: TextStyle(
 															color: Colors.blue,
 															fontWeight: FontWeight.w700),
-													)),
-												Container(
-													margin: const EdgeInsets.only(top: 40),
-													padding: const EdgeInsets.all(40),
-													width: screenSize.width * 0.9,
-													color: Colors.blue,
-													alignment: Alignment.centerLeft,
-													child: Column(
-														mainAxisAlignment:
-															MainAxisAlignment.start,
-														children: [
-															Row(children: [
-															Image.asset(
-																"assets/images/facial1.png",
-																scale: 1.4,
-															),
-															Image.asset(
-																"assets/images/facial2.png",
-																scale: 1.4,
-															),
-															Image.asset(
-																"assets/images/facial3.png",
-																scale: 1.4,
-															)
-															]),
-															Container(
-															margin: const EdgeInsets.only(
-																top: 20),
-															child: const Text(
-																"Let's book you an appointment",
-																textAlign: TextAlign.left,
-																style: TextStyle(
-																	fontSize: 18,
-																	color: Colors.white,
-																	fontWeight:
-																		FontWeight.w700),
-															),
-															),
-															Container(
-															margin: const EdgeInsets.only(
-																top: 50),
-															child: const Text(
-																"We'd love to answer your questions. Tell us your needs and we'll contact you shortly.",
-																textAlign: TextAlign.left,
-																style: TextStyle(
-																	color: Colors.white,
-																	fontWeight:
-																		FontWeight.w500),
-															),
-															),
-															Container(
-															margin: EdgeInsets.only(
-																top: 80,
-																left: screenSize.width * 0.4),
-															width: screenSize.width * 0.30,
-															decoration: BoxDecoration(
-																border: Border.all(
-																	color: Colors.white,
-																	width: 2,
-																),
-																borderRadius:
-																	const BorderRadius.all(
-																		Radius.circular(
-																			300))),
-															child: TextButton(
-																onPressed: () => {},
-																child: const Text(
-																	'Book a meeting',
-																	textAlign: TextAlign.center,
-																	style: TextStyle(
-																		color: Colors.white,
-																		fontSize: 10),
-																)),
-															)
-														]))
-												])
-										])
-								])),
+													)
+												),
+												BookMeeting()
+											]
+										)
+									])
+								])
+							),
 
 							// After covering that large amount of content, we move to the column for leaving messages to
 							// the support team.
 							const SupportMessageWidget(),
 						]),
+
 						// Next is the footer of the website.
-						Footer()
+						const Footer()
 				],
 			)
 			)
