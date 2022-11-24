@@ -106,7 +106,7 @@ class MenuDrawer extends StatelessWidget {
 					),
 					child: TextButton (
 						onPressed: () {
-							var s = "";
+							Navigator.of(context).pushNamed("/submit_cv");
 						},
 						child: const Text(
 							"Submit CV",
@@ -130,7 +130,7 @@ class MenuDrawer extends StatelessWidget {
 					),
 					child: TextButton (
 						onPressed: () {
-							var s = "";
+							Navigator.of(context).pushNamed("/login");
 						},
 						child: const Text(
 							"Login",
@@ -154,7 +154,7 @@ class MenuDrawer extends StatelessWidget {
 					),
 					child: TextButton (
 						onPressed: () {
-								Navigator.of(context).pushNamed("/request_meeting");
+							Navigator.of(context).pushNamed("/request_meeting");
 						},
 						child: const Text(
 							"Book A Meeting",

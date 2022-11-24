@@ -5,14 +5,14 @@ import 'package:somerest/widgets/responsive.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
 
-class EventPlanning extends StatefulWidget {
-  const EventPlanning({super.key});
+class Branding extends StatefulWidget {
+  const Branding({super.key});
 
 	@override
-	 EventPlanningState createState() => EventPlanningState();
+	 BrandingState createState() => BrandingState();
 }
 
-class EventPlanningState extends State<EventPlanning> {
+class BrandingState extends State<Branding> {
 	final ScrollController _scrollController = ScrollController();
 
 	double _scrollPosition = 0;

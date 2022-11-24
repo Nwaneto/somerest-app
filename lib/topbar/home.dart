@@ -242,7 +242,7 @@ class _HomeTopBarContentsState extends State<HomeTopBarContents> {
 						),
 						child: TextButton (
 							onPressed: () {
-								var s = "";
+								Navigator.of(context).pushNamed("/submit_cv");
 							},
 							child: const Text(
 								"Submit CV",
@@ -266,7 +266,7 @@ class _HomeTopBarContentsState extends State<HomeTopBarContents> {
 						),
 						child: TextButton (
 							onPressed: () {
-								var s = "";
+								Navigator.of(context).pushNamed("/login");
 							},
 							child: const Text(
 								"Login",

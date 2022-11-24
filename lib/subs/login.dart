@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:somerest/topbar/base.dart';
 import 'package:somerest/widgets/responsive.dart';
 
-import 'package:somerest/widgets/footer.dart';
-
 import 'package:somerest/widgets/menu_drawer.dart';
 
-class RequestMeeting extends StatefulWidget {
-  const RequestMeeting({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
 	@override
-	 RequestMeetingState createState() => RequestMeetingState();
+	 LoginState createState() => LoginState();
 }
 
-class RequestMeetingState extends State<RequestMeeting> {
+class LoginState extends State<Login> {
 	final ScrollController _scrollController = ScrollController();
 
 	double _scrollPosition = 0;

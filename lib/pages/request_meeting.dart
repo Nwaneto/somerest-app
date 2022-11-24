@@ -80,12 +80,7 @@ class RequestMeetingState extends State<RequestMeeting> {
 							width: screenSize.width,
 							margin: const EdgeInsets.only(bottom: 50),
 							decoration: const BoxDecoration(
-								color: Color(0xFF051441),
-								borderRadius: BorderRadius.only(
-									bottomLeft: Radius.elliptical(100, 100),
-									bottomRight: Radius.elliptical(100, 100)
-								),
-
+								color: Color(0xFF051441)
 							),
 							child: Row(
 								mainAxisAlignment: MainAxisAlignment.center,

@@ -5,14 +5,14 @@ import 'package:somerest/widgets/responsive.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
 
-class EventPlanning extends StatefulWidget {
-  const EventPlanning({super.key});
+class BackgroundChecks extends StatefulWidget {
+  const BackgroundChecks({super.key});
 
 	@override
-	 EventPlanningState createState() => EventPlanningState();
+	 BackgroundChecksState createState() => BackgroundChecksState();
 }
 
-class EventPlanningState extends State<EventPlanning> {
+class BackgroundChecksState extends State<BackgroundChecks> {
 	final ScrollController _scrollController = ScrollController();
 
 	double _scrollPosition = 0;

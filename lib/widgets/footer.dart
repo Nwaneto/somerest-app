@@ -15,7 +15,7 @@ class FooterState extends State<Footer> {
 		
 	return Column(children: [
 		Container(
-			color: Colors.black,
+			color: const Color(0xFF051441),
 			height: ResponsiveWidget.isSmallScreen(context) ? null : screenSize.height * 0.25,
 			padding: const EdgeInsets.all(10),
 			child: !ResponsiveWidget.isSmallScreen(context)
@@ -87,47 +87,124 @@ class FooterState extends State<Footer> {
 									)
 								),
 
-								const Text('Recruitment',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/recruitment");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'Recruitment',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 
-								const Text('Project Management',
-									style: TextStyle (
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/project");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'Project Management',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 
-								const Text('ICT',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/ict");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'ICT',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 
-								const Text(
-									'Background Check and Verification',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/checks");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'Background Checks',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 
-								const Text('Branding & Digital Services',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/branding");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'Branding',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 
-								const Text('Event Planning',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
+								TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/services/events");
+									},
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+									child: const Text(
+										'Event Planning',
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: 13
+										)
+									),
 								),
 							],
 						)),
@@ -154,26 +231,67 @@ class FooterState extends State<Footer> {
 										)
 									),
 									
-									const Text('About',
-										style: TextStyle(
-											color: Colors.white,
-											fontSize: 13
-										)
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/about");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'About',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
 									),
 									
-									const Text('Services',
-										style: TextStyle(
-											color: Colors.white,
-											fontSize: 13
-										)
-									),
 									
-									const Text('Find a Job',
-										style: TextStyle(
-											color: Colors.white,
-											fontSize: 13
-										)
-									)
+									
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/services");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'Services',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
+
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/find_a_job");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'Find a Job',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
 									])),
 								Container(
 									width: screenSize.width * 0.10,
@@ -183,20 +301,39 @@ class FooterState extends State<Footer> {
 										crossAxisAlignment: CrossAxisAlignment.stretch,
 										children: [
 										Container(
-											margin: const EdgeInsets.only(
-												bottom: 20),
-											child: const Text("Support",
+											margin: const EdgeInsets.only(bottom: 20),
+											child: const Text(
+												"Support",
 												style: TextStyle(
 													color: Colors.white,
 													fontWeight:
 														FontWeight.w900,
-												))),
-										const Text('Contact Us',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-												)),
-										])),
+												)
+											)
+										),
+
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/contact");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Contact Us',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
+										)
+										]
+									)
+								),
 							],
 							)
 						],
@@ -222,9 +359,9 @@ class FooterState extends State<Footer> {
 					],
 					)
 
-					:
-					
-					// On smaller screens.						
+				:
+				
+				// On smaller screens.						
 				Column(
 					mainAxisAlignment: MainAxisAlignment.center,
 					crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -292,48 +429,125 @@ class FooterState extends State<Footer> {
 											)
 										),
 
-										const Text('Recruitment',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-											)
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/recruitment");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Recruitment',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
 										),
 
-										const Text('Project Management',
-											style: TextStyle (
-												color: Colors.white,
-												fontSize: 13
-											)
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/project");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Project Management',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
 										),
 
-										const Text('ICT',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-											)
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/ict");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'ICT',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
 										),
 
-										const Text(
-											'Background Check and Verification',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-											)
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/checks");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Background Checks',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
 										),
 
-										const Text('Branding & Digital Services',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-											)
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/branding");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Branding',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
 										),
 
-										const Text('Event Planning',
-											style: TextStyle(
-												color: Colors.white,
-												fontSize: 13
-											)
-										),
+										TextButton(
+											onPressed: () {
+												Navigator.of(context).pushNamed("/services/events");
+											},
+											style: TextButton.styleFrom(
+												padding: EdgeInsets.zero,
+												tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+												minimumSize: const Size(1, 1),
+												alignment: Alignment.centerLeft
+											),
+											child: const Text(
+												'Event Planning',
+												textAlign: TextAlign.start,
+												style: TextStyle(
+													color: Colors.white,
+													fontSize: 13
+												)
+											),
+										)
 									],
 								)),
 								
@@ -360,26 +574,67 @@ class FooterState extends State<Footer> {
 									)
 								),
 								
-								const Text('About',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
-								),
-								
-								const Text('Services',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
-								),
-								
-								const Text('Find a Job',
-									style: TextStyle(
-										color: Colors.white,
-										fontSize: 13
-									)
-								)
+								TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/about");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'About',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
+									
+									
+									
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/services");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'Services',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
+
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/find_a_job");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'Find a Job',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
 								])),
 							Container(
 								width: screenSize.width * 0.20,
@@ -397,11 +652,25 @@ class FooterState extends State<Footer> {
 												fontWeight:
 													FontWeight.w900,
 											))),
-									const Text('Contact Us',
-										style: TextStyle(
-											color: Colors.white,
-											fontSize: 13
-											)),
+									TextButton(
+										onPressed: () {
+											Navigator.of(context).pushNamed("/contact");
+										},
+										style: TextButton.styleFrom(
+											padding: EdgeInsets.zero,
+											tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+											minimumSize: const Size(1, 1),
+											alignment: Alignment.centerLeft
+										),
+										child: const Text(
+											'Contact Us',
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 13
+											)
+										),
+									),
 									])),
 						]),
 

@@ -74,10 +74,6 @@ class AboutPageState extends State<AboutPage> {
 						margin: const EdgeInsets.only(bottom: 50),
 						decoration: const BoxDecoration(
 							color: Color(0xFF051441),
-							borderRadius: BorderRadius.only(
-								bottomLeft: Radius.elliptical(100, 100),
-								bottomRight: Radius.elliptical(100, 100)
-							),
 
 						),
 						child: Column(
@@ -735,7 +731,7 @@ class AboutPageState extends State<AboutPage> {
 							mainAxisAlignment: MainAxisAlignment.center,
 							children: [
 							Text(
-								"Meet the Team Lead at Somerest",
+								"Team Lead",
 								style: TextStyle(
 									fontSize: ResponsiveWidget.isSmallScreen(context) ? 23 : 29,
 									fontWeight: FontWeight.w900,

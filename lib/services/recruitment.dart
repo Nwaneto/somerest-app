@@ -5,14 +5,14 @@ import 'package:somerest/widgets/responsive.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
 
-class EventPlanning extends StatefulWidget {
-  const EventPlanning({super.key});
+class Recruitment extends StatefulWidget {
+  const Recruitment({super.key});
 
 	@override
-	 EventPlanningState createState() => EventPlanningState();
+	 RecruitmentState createState() => RecruitmentState();
 }
 
-class EventPlanningState extends State<EventPlanning> {
+class RecruitmentState extends State<Recruitment> {
 	final ScrollController _scrollController = ScrollController();
 
 	double _scrollPosition = 0;
@@ -68,6 +68,38 @@ class EventPlanningState extends State<EventPlanning> {
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.center,
 					children: [
+						Container(
+							height: screenSize.height * 0.45,
+							width: screenSize.width,
+							margin: const EdgeInsets.only(bottom: 50),
+							decoration: const BoxDecoration(
+								color: Color(0xFF051441)
+							),
+							child: Row(
+								mainAxisAlignment: MainAxisAlignment.center,
+								crossAxisAlignment: CrossAxisAlignment.center,
+								children: [
+								Text(
+									"Recruitment",
+									style: TextStyle(
+										fontSize: ResponsiveWidget.isSmallScreen(context) ? 40 : 50,
+										fontWeight: FontWeight.w900,
+										color: Colors.white,
+									)
+								),
+
+								Text(
+									".",
+									style: TextStyle(
+										fontSize: ResponsiveWidget.isSmallScreen(context) ? 40 : 50,
+										fontWeight: FontWeight.w900,
+										color: Colors.blue,
+									)
+								)
+							])
+						),
+
+
 
 						// Last of all is the footer of the page.
 						const Footer()

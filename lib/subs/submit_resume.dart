@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:somerest/topbar/base.dart';
 import 'package:somerest/widgets/responsive.dart';
+
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
 
-class EventPlanning extends StatefulWidget {
-  const EventPlanning({super.key});
+class SubmitResume extends StatefulWidget {
+  const SubmitResume({super.key});
 
 	@override
-	 EventPlanningState createState() => EventPlanningState();
+	 SubmitResumeState createState() => SubmitResumeState();
 }
 
-class EventPlanningState extends State<EventPlanning> {
+class SubmitResumeState extends State<SubmitResume> {
 	final ScrollController _scrollController = ScrollController();
 
 	double _scrollPosition = 0;
@@ -67,10 +67,10 @@ class EventPlanningState extends State<EventPlanning> {
 				physics: const ClampingScrollPhysics(),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.center,
-					children: [
+					children: const [
 
-						// Last of all is the footer of the page.
-						const Footer()
+						// Next is the footer.
+						Footer()
 					]
 				)
 			)
