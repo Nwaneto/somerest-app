@@ -801,6 +801,7 @@ class AboutPageState extends State<AboutPage> {
 										children: [
 											const Text(
 												"Kola Oladejo, the Managing Consultant is a man of principles and action who aims to always give tangible results. Many of his colleagues know him to be a man who sees anything to perfection. As a holder of a Bachelor's degree in Computer Science and a Master's degrees in both Product Management and Business Administration, Kola upholds the basic tenets of project development in order to produce tangible results based on building realistic goals and action plans. Regardless of the tasks, Kola ensures that excellent results are produced.",
+												textAlign: TextAlign.justify,
 												style: TextStyle(
 													fontSize: 17,
 													fontWeight: FontWeight.w700

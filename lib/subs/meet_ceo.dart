@@ -142,6 +142,7 @@ class MeetCEOState extends State<MeetCEO> {
 
 												Text(
 													"Kola Oladejo, the Managing Consultant is a man of principles and action who aims to always give tangible results. Many of his colleagues know him to be a man who sees anything to perfection. As a holder of a Bachelor's degree in Computer Science and a Master's degrees in both Product Management and Business Administration, Kola upholds the basic tenets of project development in order to produce tangible results based on building realistic goals and action plans. Regardless of the tasks, Kola ensures that excellent results are produced.",
+													textAlign: TextAlign.justify,
 													style: TextStyle(
 														fontSize: 17,
 														fontWeight: FontWeight.w700
@@ -158,6 +159,7 @@ class MeetCEOState extends State<MeetCEO> {
 								padding: EdgeInsets.only(left: 20, right: 20),
 								child: Text(
 									"Kola began his professional career as an IT officer with one of the leading textile firms in Nigeria 1987. Having worked in some other organizations of repute ranging from consulting, project management, and Information and Communication Technology — coupled with his innate endowment to lead, personal traits, credentials, and work ethic — Kola did not find it difficult to grow over the years to establish his own firm in 2002.",
+									textAlign: TextAlign.justify,
 									style: TextStyle(
 										fontSize: 17,
 										fontWeight: FontWeight.w700
@@ -171,6 +173,7 @@ class MeetCEOState extends State<MeetCEO> {
 								padding: EdgeInsets.only(left: 20, right: 20),
 								child: Text(
 									"He then started to replicate his applied process in his business and withing a period of 24 moths, he had turned around the business to become one of the best consulting and business support firms in the country.",
+									textAlign: TextAlign.justify,
 									style: TextStyle(
 										fontSize: 17,
 										fontWeight: FontWeight.w700
@@ -184,6 +187,7 @@ class MeetCEOState extends State<MeetCEO> {
 								padding: EdgeInsets.only(left: 20, right: 20),
 								child: Text(
 									"In 2019, when the world was stricken with the Corona Virus pandemic, the country's economy was badly affected which consequently created a chain reaction on his company. Nonetheless, Kola rose above the challenges posed by this situation and equally took advantage to move his firm to the next level. Now, he he no longer just met up with goals, but exceeded them month in and month out. He created seamless processes that were undeniably close to genius.",
+									textAlign: TextAlign.justify,
 									style: TextStyle(
 										fontSize: 17,
 										fontWeight: FontWeight.w700
@@ -229,6 +233,7 @@ class MeetCEOState extends State<MeetCEO> {
 
 											Text(
 												"Kola Oladejo, the Managing Consultant is a man of principles and action who aims to always give tangible results. Many of his colleagues know him to be a man who sees anything to perfection. As a holder of a Bachelor's degree in Computer Science and a Master's degrees in both Product Management and Business Administration, Kola upholds the basic tenets of project development in order to produce tangible results based on building realistic goals and action plans. Regardless of the tasks, Kola ensures that excellent results are produced.",
+												textAlign: TextAlign.justify,
 												style: TextStyle(
 													fontSize: 17,
 													fontWeight: FontWeight.w700
@@ -240,6 +245,7 @@ class MeetCEOState extends State<MeetCEO> {
 
 											Text(
 												"Kola began his professional career as an IT officer with one of the leading textile firms in Nigeria 1987. Having worked in some other organizations of repute ranging from consulting, project management, and Information and Communication Technology — coupled with his innate endowment to lead, personal traits, credentials, and work ethic — Kola did not find it difficult to grow over the years to establish his own firm in 2002.",
+												textAlign: TextAlign.justify,
 												style: TextStyle(
 													fontSize: 17,
 													fontWeight: FontWeight.w700
@@ -250,6 +256,7 @@ class MeetCEOState extends State<MeetCEO> {
 
 											Text(
 												"He then started to replicate his applied process in his business and withing a period of 24 moths, he had turned around the business to become one of the best consulting and business support firms in the country.",
+												textAlign: TextAlign.justify,
 												style: TextStyle(
 													fontSize: 17,
 													fontWeight: FontWeight.w700
@@ -260,6 +267,7 @@ class MeetCEOState extends State<MeetCEO> {
 
 											Text(
 												"In 2019, when the world was stricken with the Corona Virus pandemic, the country's economy was badly affected which consequently created a chain reaction on his company. Nonetheless, Kola rose above the challenges posed by this situation and equally took advantage to move his firm to the next level. Now, he he no longer just met up with goals, but exceeded them month in and month out. He created seamless processes that were undeniably close to genius.",
+												textAlign: TextAlign.justify,
 												style: TextStyle(
 													fontSize: 17,
 													fontWeight: FontWeight.w700

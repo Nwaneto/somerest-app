@@ -385,6 +385,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "First Name",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -408,6 +411,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Last Name",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -431,6 +437,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Phone Number",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -454,6 +463,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Email",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -476,6 +488,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Company Name",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -499,6 +514,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Reason For Meeting",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -789,6 +807,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 																	decoration: const InputDecoration(
 																		labelText: "First Name",
 																		hintText: "Required",
+																		hintStyle: TextStyle(
+																			color: Colors.red
+																		),
 																		border: OutlineInputBorder(
 																			borderRadius: BorderRadius.all(
 																				Radius.circular(10)
@@ -811,6 +832,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 																	decoration: const InputDecoration(
 																		labelText: "Last Name",
 																		hintText: "Required",
+																		hintStyle: TextStyle(
+																			color: Colors.red
+																		),
 																		border: OutlineInputBorder(
 																			borderRadius: BorderRadius.all(
 																				Radius.circular(10)
@@ -841,6 +865,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 																	decoration: const InputDecoration(
 																		labelText: "Phone Number",
 																		hintText: "Required",
+																		hintStyle: TextStyle(
+																			color: Colors.red
+																		),
 																		border: OutlineInputBorder(
 																			borderRadius: BorderRadius.all(
 																				Radius.circular(10)
@@ -863,6 +890,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 																	decoration: const InputDecoration(
 																		labelText: "Email",
 																		hintText: "Required",
+																		hintStyle: TextStyle(
+																			color: Colors.red
+																		),
 																		border: OutlineInputBorder(
 																			borderRadius: BorderRadius.all(
 																				Radius.circular(10)
@@ -888,6 +918,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Company Name",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)
@@ -911,6 +944,9 @@ class RequestMeetingState extends State<RequestMeeting> {
 														decoration: const InputDecoration(
 															labelText: "Reason For Meeting",
 															hintText: "Required",
+															hintStyle: TextStyle(
+																color: Colors.red
+															),
 															border: OutlineInputBorder(
 																borderRadius: BorderRadius.all(
 																	Radius.circular(10)

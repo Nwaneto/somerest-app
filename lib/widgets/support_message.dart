@@ -58,6 +58,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 										decoration: const InputDecoration(
 											labelText: "Name",
 											hintText: "Required",
+											hintStyle: TextStyle(
+												color: Colors.red
+											),
 											border: OutlineInputBorder(
 												borderRadius: BorderRadius.all(
 													Radius.circular(10)
@@ -80,6 +83,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 										decoration: const InputDecoration(
 											labelText: "Email",
 											hintText: "Required",
+											hintStyle: TextStyle(
+												color: Colors.red
+											),
 											border: OutlineInputBorder(
 												borderRadius: BorderRadius.all(
 													Radius.circular(10)
@@ -108,6 +114,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Subject",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
@@ -134,6 +143,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Your Message",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
@@ -203,6 +215,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Name",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
@@ -226,6 +241,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Email",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
@@ -249,6 +267,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Subject",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
@@ -275,6 +296,9 @@ class SupportMessageState extends State<SupportMessageWidget> {
 								decoration: const InputDecoration(
 									labelText: "Your Message",
 									hintText: "Required",
+									hintStyle: TextStyle(
+										color: Colors.red
+									),
 									border: OutlineInputBorder(
 										borderRadius: BorderRadius.all(
 											Radius.circular(10)
