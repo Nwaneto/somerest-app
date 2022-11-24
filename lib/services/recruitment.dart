@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:somerest/topbar/base.dart';
+import 'package:somerest/widgets/book_meeting.dart';
 import 'package:somerest/widgets/responsive.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/menu_drawer.dart';
@@ -389,7 +390,44 @@ class RecruitmentState extends State<Recruitment> {
 							)
 						),
 
-						const SizedBox(height: 30),
+						const Padding(
+						  padding: EdgeInsets.only(left: 10, right: 10, top: 30),
+						  child: Text (
+						  	"By continuing you agree to Somerest's Terms and Conditions including our policies prohibiting discriminatory posts\n\n Note: This information would be verified for authenticity"
+						  ),
+						),
+
+						Column(
+							crossAxisAlignment: ResponsiveWidget.isSmallScreen(context) ? CrossAxisAlignment.center : CrossAxisAlignment.end,
+							children: [
+								Container(
+									margin: const EdgeInsets.only(top: 30, right: 30, bottom: 50),
+									padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+									decoration:  BoxDecoration(
+										color: const Color(0xFF077bd7),
+										borderRadius: BorderRadius.circular(10)
+									),
+									child: TextButton (
+										onPressed: () {
+
+										},
+										child: const Text(
+											"Submit",
+											style:  TextStyle(
+												color: Colors.white,
+												fontSize: 18
+											),
+										)
+									),
+								),
+
+								// This is followed by a meeting booking request.
+								Container(
+									margin: EdgeInsets.only(right: ResponsiveWidget.isSmallScreen(context) ? 0 : screenSize.width * 0.64),
+									child: BookMeeting()
+								),
+							]
+						),
 
 						// Next it is the ability to message support.
 						const SupportMessageWidget(), 
