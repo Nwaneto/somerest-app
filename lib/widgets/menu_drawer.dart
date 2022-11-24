@@ -154,7 +154,7 @@ class MenuDrawer extends StatelessWidget {
 					),
 					child: TextButton (
 						onPressed: () {
-							var s = "";
+								Navigator.of(context).pushNamed("/request_meeting");
 						},
 						child: const Text(
 							"Book A Meeting",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:somerest/pages/contact_page.dart';
 import 'package:somerest/pages/home_page.dart';
+import 'package:somerest/pages/request_meeting.dart';
 import 'package:somerest/pages/services_page.dart';
 import 'package:somerest/pages/about_page.dart';
 
@@ -22,6 +23,11 @@ class RouterGenerator {
 			case '/contact':
 			case "\\contact": {
 				return MaterialPageRoute(builder: (_) => const ContactPage());
+			}
+
+			case "/request_meeting":
+			case "\\request_meeting": {
+				return MaterialPageRoute(builder: (_) => const RequestMeeting());
 			}
 
 			default: {

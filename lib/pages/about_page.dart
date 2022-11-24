@@ -166,15 +166,273 @@ class AboutPageState extends State<AboutPage> {
 						),
 					),
 
+					ResponsiveWidget.isSmallScreen(context) 
 
-					// The experience road map.
+					?
+
+					// For smaller screens like phones
+					Column(children: [
+						Container(
+							width: screenSize.width,
+							color: const Color(0xFF051441),
+							padding: const EdgeInsets.only(top: 30, bottom: 50),
+							margin: const EdgeInsets.only(top: 40),
+							child: Column(
+								crossAxisAlignment: CrossAxisAlignment.center,
+								children: [
+									const Text(
+										"Our Years of Experience in the Industry",
+										textAlign: TextAlign.center,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize:  20,
+											fontWeight: FontWeight.w700
+										),
+									),
+	
+									// Then the timeline widget
+									Container(
+										margin: const EdgeInsets.only(top: 30, bottom: 9),
+										width: screenSize.width * 0.90,
+										child: Row(
+											mainAxisAlignment: MainAxisAlignment.spaceBetween,
+											children: const [
+												Text(
+													"Founded",
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 19
+													)
+												),
+	
+												Text(
+													"Present",
+													style: TextStyle(
+														color: Colors.white,
+														fontSize: 19,
+													)
+												),
+											]
+										),
+									),
+	
+									// For the time ruler...
+									SizedBox(
+										width: screenSize.width * 0.9,
+										child: Stack(
+										children: [
+											Container(
+												margin: const EdgeInsets.only(left: 5, right: 5),
+												child: const Divider(
+												color: Colors.white,
+												thickness: 5,
+												),
+											),
+	
+											Row(
+												mainAxisAlignment: MainAxisAlignment.spaceBetween,
+												children: [
+												Container(
+													height: 10,
+													width: 10,
+													margin: const EdgeInsets.only(top: 3),
+													decoration: BoxDecoration(
+														color: Colors.red,
+														borderRadius: BorderRadius.circular(10000)
+													),
+												),
+	
+												Container(
+													height: 10,
+													width: 10,
+													margin: const EdgeInsets.only(top: 3),
+													decoration: BoxDecoration(
+														color: Colors.red,
+														borderRadius: BorderRadius.circular(10000)
+													),
+												),
+											]),
+	
+											Positioned(
+												left: screenSize.width *0.35,
+												child: Container(
+													height: 10,
+													width: 10,
+													margin: const EdgeInsets.only(top: 3),
+													decoration: BoxDecoration(
+														color: Colors.red,
+														borderRadius: BorderRadius.circular(10000)
+													),
+												)
+											)
+										]),
+									),
+	
+									// For the time under the ruler.
+									SizedBox(
+										width: screenSize.width*0.9,
+										child: Stack(children: [
+											Row(
+												mainAxisAlignment: MainAxisAlignment.spaceBetween,
+												children: const [
+													Text(
+														"2002",
+														style: TextStyle(
+															color: Colors.red,
+															fontSize: 18,
+															fontWeight: FontWeight.w700
+														),
+													),
+	
+													Text(
+														"2022",
+														style: TextStyle(
+															color: Colors.red,
+															fontSize: 18,
+															fontWeight: FontWeight.w700
+														),
+													),
+											]),
+	
+											Positioned(
+												left: (screenSize.width *0.35) - 15,
+												child: const Text(
+														"2010",
+														style: TextStyle(
+															color: Colors.red,
+															fontSize: 18,
+															fontWeight: FontWeight.w700
+														),
+													),
+											)
+										])
+									),
+	
+									// Next is the CEO's quote.
+									Container(
+										margin: const EdgeInsets.only(top: 50),
+										width: screenSize.width * 0.6,
+										child: const Text(
+											"\"In the Last 20 years, even despite a lot of challenges that COVID-19 posed to many organizations and Nigeria's economy at large, we at SOMEREST are still able to record many successes viza-vize total staff commitment and dedication towards companies' goals.\"",
+											style: TextStyle(
+												color: Colors.white,
+												fontSize: 14
+											),
+										)
+									)
+								])
+							),
+
+							// For the next section, we need these to come before the styling rings.
+							Container(
+								margin: const EdgeInsets.only(bottom: 70),
+								width: screenSize.width * 0.9,
+								child: Column(
+								crossAxisAlignment: CrossAxisAlignment.stretch,
+								children: [
+									Image.asset(
+										"assets/images/image6.png",
+										fit: BoxFit.fitWidth
+									),
+
+									const Text(
+										"What we serve",
+										textAlign: TextAlign.center,
+										style: TextStyle(
+											fontSize: 26,
+											color: Colors.blue,
+											fontWeight: FontWeight.w800
+										),
+									),
+
+									const Text(
+										"Our professional services are customer focused, value drive and result oriented. It is through our dedication and drive for excellence that we demonstrate out understanding of the business issues. We ascertain your exact requirements and value system in order to save time and present the right people and resources on time — every time.",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											fontSize: 17,
+											fontWeight: FontWeight.w600
+										),
+									)
+								],
+								),
+							),
+
+							SizedBox(
+								width: screenSize.width * 0.9,
+								child: Column(
+									crossAxisAlignment: CrossAxisAlignment.stretch,
+									children: [
+										Image.asset(
+											"assets/images/image8.png",
+											fit: BoxFit.fitWidth
+										),
+
+										const Text(
+											"Our Values",
+											textAlign: TextAlign.center,
+											style: TextStyle(
+												fontSize: 26,
+												color: Colors.blue,
+												fontWeight: FontWeight.w800
+											),
+										),
+
+										const Text(
+											"· Quality Driven\n\n· Committed to excellence and integrity\n\n·Customer centric policies\n\n·Time efficiency",
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												fontSize: 17,
+												fontWeight: FontWeight.w600
+											),
+										)
+									]
+								),
+							),
+
+							Container(
+								margin: const EdgeInsets.only(top: 70, bottom: 70),
+								width: screenSize.width * 0.9,
+								child: Column(
+									crossAxisAlignment: CrossAxisAlignment.stretch,
+									children: [
+										Image.asset(
+											"assets/images/image7.png",
+											fit: BoxFit.fitWidth,
+										),
+
+										const Text(
+											"Why choose us",
+											textAlign: TextAlign.center,
+											style: TextStyle(
+												fontSize: 26,
+												color: Colors.blue,
+												fontWeight: FontWeight.w800
+											),
+										),
+
+										const Text(
+											"We make our clients' objectives our own goals while keeping to our ideals and standards that reflect customer opinion and efficient implementation of services. We do not concern ourselves with the notion of how far or well but the notion of how fast and perfect.",
+											textAlign: TextAlign.start,
+											style: TextStyle(
+												fontSize: 17,
+												fontWeight: FontWeight.w600
+											),
+										)
+									],
+								),
+							)
+						]
+					)
+					:
+					
+					// For larger screens like desktops and tablets
 					Stack(
 						children: [
 							Container(
 							width: screenSize.width,
 							height: screenSize.height * 0.635,
 							color: const Color(0xFF051441),
-							padding: const EdgeInsets.only(top: 30, bottom: 20),
+							padding: EdgeInsets.only(top: 30, bottom: ResponsiveWidget.isSmallScreen(context) ? 50 : 20),
 							margin: const EdgeInsets.only(top: 40),
 							child: Column(
 								crossAxisAlignment: CrossAxisAlignment.center,
@@ -322,37 +580,132 @@ class AboutPageState extends State<AboutPage> {
 								])
 							),
 
-							ResponsiveWidget.isSmallScreen(context) 
-							
-							?
+							// For the next section, we need these to come before the styling rings.
+							Container(
+								margin: EdgeInsets.only(top:  (screenSize.height * 0.635) +20),
+								child: Row(
+									mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+									children: [
+										SizedBox(
+										  width: screenSize.width * 0.3,
+										  height: screenSize.height * 0.90,
+										  child: Column(
+										  	crossAxisAlignment: CrossAxisAlignment.center,
+										  	children: [
+										  		Image.asset(
+										  			"assets/images/image6.png",
+										  			scale: 1.3
+										  		),
 
-							Positioned(child: Container())
+										  		const Text(
+										  			"What we serve",
+										  			textAlign: TextAlign.center,
+										  			style: TextStyle(
+										  				fontSize: 26,
+										  				color: Colors.blue,
+										  				fontWeight: FontWeight.w800
+										  			),
+										  		),
 
-							:
+										  		const Text(
+										  			"Our professional services are customer focused, value drive and result oriented. It is through our dedication and drive for excellence that we demonstrate out understanding of the business issues. We ascertain your exact requirements and value system in order to save time and present the right people and resources on time — every time.",
+										  			textAlign: TextAlign.start,
+										  			style: TextStyle(
+										  				fontSize: 17,
+										  				fontWeight: FontWeight.w600
+										  			),
+										  		)
+										  	],
+										  ),
+										),
+
+										SizedBox(
+										  height: screenSize.height * 0.90,
+										  width: screenSize.width * 0.3,
+										  child: Column(
+										  	crossAxisAlignment: CrossAxisAlignment.center,
+										  	children: [
+										  		Image.asset(
+										  			"assets/images/image8.png",
+										  			scale: 1.35
+										  		),
+
+										  		const Text(
+										  			"Our Values",
+										  			textAlign: TextAlign.center,
+										  			style: TextStyle(
+										  				fontSize: 26,
+										  				color: Colors.blue,
+										  				fontWeight: FontWeight.w800
+										  			),
+										  		),
+
+										  		const Text(
+										  			"· Quality Driven\n\n· Committed to excellence and integrity\n\n·Customer centric policies\n\n·Time efficiency",
+										  			textAlign: TextAlign.start,
+										  			style: TextStyle(
+										  				fontSize: 17,
+										  				fontWeight: FontWeight.w600
+										  			),
+										  		)
+										  	],
+										  ),
+										),
+
+										SizedBox(
+										  width: screenSize.width * 0.3,
+										  height: screenSize.height * 0.90,
+										  child: Column(
+										  	crossAxisAlignment: CrossAxisAlignment.center,
+										  	children: [
+										  		Image.asset(
+										  			"assets/images/image7.png",
+										  			scale: 1.2
+										  		),
+
+										  		const Text(
+										  			"Why choose us",
+										  			textAlign: TextAlign.center,
+										  			style: TextStyle(
+										  				fontSize: 26,
+										  				color: Colors.blue,
+										  				fontWeight: FontWeight.w800
+										  			),
+										  		),
+
+										  		const Text(
+										  			"We make our clients' objectives our own goals while keeping to our ideals and standards that reflect customer opinion and efficient implementation of services. We do not concern ourselves with the notion of how far or well but the notion of how fast and perfect.",
+										  			textAlign: TextAlign.start,
+										  			style: TextStyle(
+										  				fontSize: 17,
+										  				fontWeight: FontWeight.w600
+										  			),
+										  		)
+										  	],
+										  ),
+										)
+									],
+								
+								)
+							),
 
 							Positioned(
 								left: -40,
 								top: 320,
-								child: Container(
-								height: screenSize.height/3,
-								width: screenSize.height/3,
-								margin: const EdgeInsets.only(top: 3),
-								decoration: BoxDecoration(
-									borderRadius: BorderRadius.circular(10000),
-									border: Border.all(
-										width: 40,
-										color: Colors.white
-									)
-								),
+								child: Container (
+									height: screenSize.height/3,
+									width: screenSize.height/3,
+									margin: const EdgeInsets.only(top: 3),
+									decoration: BoxDecoration(
+										color: const Color(0xFF051441),
+										borderRadius: BorderRadius.circular(10000),
+										border: Border.all(
+											width: 40,
+											color: Colors.white
+										)
+									),
 								),
 							),
-
-							ResponsiveWidget.isSmallScreen(context)
-							// If this is a small screen we do not want to show this at all.
-							?
-
-							const SizedBox()
-							:
 
 							// Only show this if this is a large screen.
 							Positioned(
@@ -363,6 +716,7 @@ class AboutPageState extends State<AboutPage> {
 								width: screenSize.height/3,
 								margin: const EdgeInsets.only(top: 3),
 								decoration: BoxDecoration(
+									color: const Color(0xFF051441),
 									borderRadius: BorderRadius.circular(10000),
 									border: Border.all(
 										width: 40,
@@ -370,13 +724,184 @@ class AboutPageState extends State<AboutPage> {
 									)
 								),
 								),
-							),
-
+							)
 						]
 					),
 
+					// Now for the CEO's notes
+					SizedBox(
+						width: screenSize.width * 0.95,
+						child: Row (
+							mainAxisAlignment: MainAxisAlignment.center,
+							children: [
+							Text(
+								"Meet the Team Lead at Somerest",
+								style: TextStyle(
+									fontSize: ResponsiveWidget.isSmallScreen(context) ? 23 : 29,
+									fontWeight: FontWeight.w900,
+									color: Colors.black,
+								)
+							),
+
+							Text(
+								".",
+								style: TextStyle(
+									fontSize: ResponsiveWidget.isSmallScreen(context) ? 23 : 29,
+									fontWeight: FontWeight.w900,
+									color: Colors.red,
+								)
+							)
+						]),
+					),
+
+					!ResponsiveWidget.isSmallScreen(context)
+
+					?
+
+					// After that, we push the banner telling you what kind of man he is to you.
+					Row(
+						mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+						children: [
+							Container(
+							  margin: const EdgeInsets.only(top: 30),
+							  child: Column(
+								crossAxisAlignment: CrossAxisAlignment.center,
+								children: [
+									Container(
+									  margin: const EdgeInsets.only(bottom: 10),
+									  width: screenSize.height * 0.33,
+							  		  height: screenSize.height * 0.33,
+									  child: const CircleAvatar(
+									  	backgroundImage: AssetImage("assets/images/image2.png"),
+							 		),
+									),
+
+									const Text(
+										"CEO",
+										style: TextStyle(
+											fontSize: 20,
+											fontWeight: FontWeight.w900
+										)
+									),
+
+									const Text(
+										"Oladejo Kola",
+										style: TextStyle(
+											fontSize: 16,
+											color: Colors.blue
+										)
+									),
+							  ]),
+							),
+
+							SizedBox(
+								width: screenSize.width * 0.66,
+								child: Card(
+									color: Colors.white,
+									child: Padding(
+									  padding: const EdgeInsets.all(10),
+									  child: Column(
+										crossAxisAlignment: CrossAxisAlignment.end,
+										children: [
+											const Text(
+												"Kola Oladejo, the Managing Consultant is a man of principles and action who aims to always give tangible results. Many of his colleagues know him to be a man who sees anything to perfection. As a holder of a Bachelor's degree in Computer Science and a Master's degrees in both Product Management and Business Administration, Kola upholds the basic tenets of project development in order to produce tangible results based on building realistic goals and action plans. Regardless of the tasks, Kola ensures that excellent results are produced.",
+												style: TextStyle(
+													fontSize: 17,
+													fontWeight: FontWeight.w700
+												)
+											),
+
+											TextButton(
+												onPressed: () {
+													Navigator.of(context).pushNamed("/ceo");
+												},
+												child: const Text(
+													"Read More"
+												)
+											)
+										])
+									),
+								),
+							),
+						],
+					)
+
+					: 
+
+					Column(
+						mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+						children: [
+							Container(
+							  margin: const EdgeInsets.only(top: 30, bottom: 40),
+							  child: Column(
+								crossAxisAlignment: CrossAxisAlignment.center,
+								children: [
+									Container(
+									  margin: const EdgeInsets.only(bottom: 10),
+									  width: screenSize.height * 0.5,
+							  		  height: screenSize.height * 0.5,
+									  child: const CircleAvatar(
+									  	backgroundImage: AssetImage("assets/images/image2.png"),
+							 		),
+									),
+
+									const Text(
+										"CEO",
+										style: TextStyle(
+											fontSize: 20,
+											fontWeight: FontWeight.w900
+										)
+									),
+
+									const Text(
+										"Oladejo Kola",
+										style: TextStyle(
+											fontSize: 16,
+											color: Colors.blue
+										)
+									),
+							  ]),
+							),
+
+							SizedBox(
+								width: screenSize.width * 0.9,
+								child: Card(
+									color: Colors.white,
+									elevation: 200,
+									child: Padding(
+									  padding: const EdgeInsets.all(10),
+									  child: Column(
+										crossAxisAlignment: CrossAxisAlignment.end,
+										children: [
+											const Text(
+												"Kola Oladejo, the Managing Consultant is a man of principles and action who aims to always give tangible results. Many of his colleagues know him to be a man who sees anything to perfection. As a holder of a Bachelor's degree in Computer Science and a Master's degrees in both Product Management and Business Administration, Kola upholds the basic tenets of project development in order to produce tangible results based on building realistic goals and action plans. Regardless of the tasks, Kola ensures that excellent results are produced.",
+												style: TextStyle(
+													fontSize: 17,
+													fontWeight: FontWeight.w700
+												)
+											),
+
+											TextButton(
+												onPressed: () {
+													Navigator.of(context).pushNamed("/ceo");
+												},
+												child: const Text(
+													"Read More"
+												)
+											)
+										])
+									),
+								),
+							),
+						],
+					),
+
+
+					const SizedBox(height: 80,),
+
 					// For some reason this page has a support conversation box so... let's put that here too.
 					const SupportMessageWidget(),
+
 
 					// Next is the footer of the website.
 					const Footer()

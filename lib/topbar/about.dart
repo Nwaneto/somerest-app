@@ -266,7 +266,7 @@ class _AboutTopBarContentsState extends State<AboutTopBarContents> {
 						),
 						child: TextButton (
 							onPressed: () {
-								var s = "";
+								
 							},
 							child: const Text(
 								"Login",
@@ -290,7 +290,7 @@ class _AboutTopBarContentsState extends State<AboutTopBarContents> {
 						),
 						child: TextButton (
 							onPressed: () {
-								var s = "";
+								Navigator.of(context).pushNamed("/request_meeting");
 							},
 							child: const Text(
 								"Book A Meeting",

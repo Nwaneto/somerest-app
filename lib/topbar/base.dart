@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:somerest/widgets/responsive.dart';
 
-class ServicesTopBarContents extends StatefulWidget {
-	ServicesTopBarContents({
+class TopBarContents extends StatefulWidget {
+	TopBarContents({
 		super.key
 	});
 
 	@override
-	_ServicesTopBarContentsState createState() => _ServicesTopBarContentsState();
+	_TopBarContentsState createState() => _TopBarContentsState();
 }
 
-class _ServicesTopBarContentsState extends State<ServicesTopBarContents> {
+class _TopBarContentsState extends State<TopBarContents> {
 	final List _isHovering = [
 		false,
 		false,
@@ -18,9 +18,7 @@ class _ServicesTopBarContentsState extends State<ServicesTopBarContents> {
 		false
 	];
 
-	final int page = 2;
-
-	_ServicesTopBarContentsState();
+	final int page = -1;
 
 	@override
 	Widget build(BuildContext context) {
@@ -268,7 +266,7 @@ class _ServicesTopBarContentsState extends State<ServicesTopBarContents> {
 						),
 						child: TextButton (
 							onPressed: () {
-								var s = "";
+								
 							},
 							child: const Text(
 								"Login",

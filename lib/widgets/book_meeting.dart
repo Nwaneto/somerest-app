@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:somerest/widgets/responsive.dart';
 
 class BookMeeting extends StatefulWidget {
 	@override
@@ -10,16 +11,16 @@ class BookMeetingState extends State<BookMeeting> {
 	Widget build(BuildContext context) {
 		var screenSize = MediaQuery.of(context).size;
 		return Container(
-			margin: const EdgeInsets.only(left: 40),
+			margin: EdgeInsets.only(left: ResponsiveWidget.isSmallScreen(context) ? 0 : 40, top: ResponsiveWidget.isSmallScreen(context) ? 40 : 0),
 			padding: const EdgeInsets.all(40),
-			width: screenSize.width * 0.3,
+			width: ResponsiveWidget.isSmallScreen(context) ? screenSize.width * 0.9: screenSize.width * 0.3,
 			color: Colors.blue,
 			alignment: Alignment.centerLeft,
 			child: Column(
 				mainAxisAlignment: MainAxisAlignment.start,
 				crossAxisAlignment: CrossAxisAlignment.start,
 				children: [
-				Container(
+				SizedBox(
 					width: 300,
 					height: 100,
 					child: Stack(	
@@ -76,7 +77,6 @@ class BookMeetingState extends State<BookMeeting> {
 				Container(
 					margin: const EdgeInsets.only(
 						top: 80),
-					width: screenSize.width * 0.09,
 					decoration: BoxDecoration(
 						border: Border.all(
 						color: Colors.white,
