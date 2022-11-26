@@ -126,7 +126,7 @@ class RecruitmentState extends State<Recruitment> {
 						const Padding(
 						  padding: EdgeInsets.all(10),
 						  child: Text(
-						  	"Tap into our system to choose our streamlined recruitment process to save yourself money and hassle. This services cover the following:",
+						  	"Tap into our system to choose our streamlined recruitment process to save yourself money and hassle. Our services cover the following:",
 						  	textAlign: TextAlign.justify,
 							style: TextStyle(
 						  		fontSize: 18

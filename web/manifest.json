@@ -1,11 +1,11 @@
 {
-    "name": "somerest",
-    "short_name": "somerest",
+    "name": "Somerest Consulting Services",
+    "short_name": "Somerest",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "SOMEREST commenced business operation in the year 2002 as an ICT and project management firm and later expanded to cover recruitment/outsourcing, branding and event planning with an emphasis on business support services consultancy. Over the past years, we have consolidated the business by providing excellent services to our clients. At SOMEREST we share ideas, knowledge, and experience to deliver outstanding results to our clients. We also invest heavily in staff training and ensuring our team is equipped with specialist skills necessary to perform to the highest possible standard. SOMEREST is committed to providing tailored end-to-end services to its clients resulting in mutually beneficial outcomes without compromising on the overall quality of our services and our partnership with our clients to ensure we understand their goals and guidelines. We hold the requisite licenses required by law to offer our services and management and staff are qualified to discharge their responsibilities.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

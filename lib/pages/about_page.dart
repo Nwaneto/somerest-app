@@ -154,7 +154,7 @@ class AboutPageState extends State<AboutPage> {
 							"""
 							SOMEREST commenced business operation in the year 2002 as an ICT and project management firm and later expanded to cover recruitment/outsourcing, branding and event planning with an emphasis on business support services consultancy. Over the past years, we have consolidated the business by providing excellent services to our clients.
 							At SOMEREST we share ideas, knowledge, and experience to deliver outstanding results to our clients. We also invest heavily in staff training and ensuring our team is equipped with specialist skills necessary to perform to the highest possible standard.
-							SOMEREST is committed to providing tailored end-to-end services to its clients resulting in mutually beneficial outcomes without compromising on the overall quality of our services and our partnership with our clients to ensure we understand their goals and guidelines. We hold the requisite licenses required by law to offer our services and management and staffs are qualified to discharge their responsibilities.""",
+							SOMEREST is committed to providing tailored end-to-end services to its clients resulting in mutually beneficial outcomes without compromising on the overall quality of our services and our partnership with our clients to ensure we understand their goals and guidelines. We hold the requisite licenses required by law to offer our services and management and staff are qualified to discharge their responsibilities.""",
 							style: TextStyle(
 								fontSize: 16,
 								fontWeight: FontWeight.w700
@@ -834,7 +834,7 @@ class AboutPageState extends State<AboutPage> {
 								crossAxisAlignment: CrossAxisAlignment.center,
 								children: [
 									Container(
-									  margin: const EdgeInsets.only(bottom: 10),
+									  margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
 									  width: screenSize.height * 0.5,
 							  		  height: screenSize.height * 0.5,
 									  child: const CircleAvatar(
