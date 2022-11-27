@@ -66,10 +66,41 @@ class ContactPageState extends State<ContactPage> {
 				controller: _scrollController,
 				physics: const ClampingScrollPhysics(),
 				child: Column(
-					children: const [
+					children: [
+						Container(
+							height: screenSize.height * 0.45,
+							width: screenSize.width,
+							margin: const EdgeInsets.only(bottom: 50),
+							decoration: const BoxDecoration(
+								color: Color(0xFF051441)
+							),
+							child: Row(
+								mainAxisAlignment: MainAxisAlignment.center,
+								crossAxisAlignment: CrossAxisAlignment.center,
+								children: [
+								Text(
+									"Contact Us",
+									style: TextStyle(
+										fontSize: ResponsiveWidget.isSmallScreen(context) ? 40 : 50,
+										fontWeight: FontWeight.w900,
+										color: Colors.white,
+									)
+								),
+
+								Text(
+									".",
+									style: TextStyle(
+										fontSize: ResponsiveWidget.isSmallScreen(context) ? 40 : 50,
+										fontWeight: FontWeight.w900,
+										color: Colors.blue,
+									)
+								)
+							])
+						),
+
 						
 						// Next is the footer of the website.
-						Footer()
+						const Footer()
 				],
 			)
 			)

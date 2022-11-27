@@ -369,7 +369,7 @@ class RecruitmentState extends State<Recruitment> {
 							child: TextField(
 								maxLines: 4,
 								cursorColor: Colors.blue,
-								controller: _messageController,
+								controller: _descriptionController,
 								decoration: const InputDecoration(
 									labelText: "Description",
 									hintText: "Add skill requirements you're looking for in 100-200 words",
