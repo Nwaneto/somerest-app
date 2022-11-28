@@ -67,7 +67,26 @@ class RegisterState extends State<Register> {
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.center,
 					children: [
+						ResponsiveWidget.isSmallScreen(context)
 
+						? 
+
+						// For mobile phones.
+
+						Column(
+
+						)
+
+						:
+
+						Container (
+							decoration: BoxDecoration(
+								borderRadius: BorderRadius.circular(10)
+							),
+							child: const Card(
+
+							)
+						)
 					]
 				)
 			)
