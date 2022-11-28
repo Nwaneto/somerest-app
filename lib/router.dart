@@ -13,6 +13,7 @@ import 'package:somerest/services/project_management.dart';
 import 'package:somerest/services/recruitment.dart';
 import 'package:somerest/subs/login.dart';
 import 'package:somerest/subs/meet_ceo.dart';
+import 'package:somerest/subs/register.dart';
 import 'package:somerest/subs/submit_resume.dart';
 
 class RouterGenerator {
@@ -73,6 +74,11 @@ class RouterGenerator {
 			case "/login":
 			case "\\login": {
 				return MaterialPageRoute(builder: (_) => const Login());
+			}
+
+			case "/register":
+			case "\\register": {
+				return MaterialPageRoute(builder: (_) => const Register());
 			}
 
 			case "/ceo":
