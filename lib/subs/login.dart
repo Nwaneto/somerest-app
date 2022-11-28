@@ -67,7 +67,35 @@ class LoginState extends State<Login> {
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.center,
 					children: [
+						ResponsiveWidget.isSmallScreen(context)
 
+						? 
+
+						// For mobile phones.
+
+						Column(
+
+						)
+
+						:
+
+						Container (
+							decoration: BoxDecoration(
+								borderRadius: BorderRadius.circular(10)
+							),
+							child: Card(
+								child: Row(
+									children: [
+										Container(
+											decoration: BoxDecoration(
+												borderRadius: BorderRadius.circular(10)
+											),
+											child: Image.asset("assets/images/image10.png"),
+										)
+									],
+								),
+							)
+						)
 					]
 				)
 			)

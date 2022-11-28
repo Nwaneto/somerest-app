@@ -83,8 +83,17 @@ class RegisterState extends State<Register> {
 							decoration: BoxDecoration(
 								borderRadius: BorderRadius.circular(10)
 							),
-							child: const Card(
-
+							child: Card(
+								child: Row(
+									children: [
+										Container(
+											decoration: BoxDecoration(
+												borderRadius: BorderRadius.circular(10)
+											),
+											child: Image.asset("assets/images/image10.png"),
+										)
+									],
+								),
 							)
 						)
 					]
