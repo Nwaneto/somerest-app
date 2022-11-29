@@ -150,7 +150,9 @@ class _HomePageState extends State<HomePage> {
 											color: Colors.blue,
 											borderRadius: BorderRadius.circular(10)),
 										child: TextButton(
-											onPressed: () {},
+											onPressed: () {
+												Navigator.of(context).pushNamed("/about");
+											},
 											child: const Text(
 											'Read More',
 											textAlign: TextAlign.center,
