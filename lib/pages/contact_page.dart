@@ -406,18 +406,18 @@ class ContactPageState extends State<ContactPage> {
 									Text(
 										"Do you have a comment or question?",
 										style: TextStyle(
-											fontWeight: FontWeight.w900,
+											fontWeight: FontWeight.w800,
 											fontSize: 22
 										)
 									),
 
-									SizedBox(width: 30),
+									SizedBox(width: 10),
 
 									Text(
 										"Can't find what you are looking for?",
 										style: TextStyle(
-											fontWeight: FontWeight.w700,
-											fontSize: 22
+											fontWeight: FontWeight.w800,
+											fontSize: 20
 										),
 									)
 								],

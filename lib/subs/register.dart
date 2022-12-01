@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:somerest/topbar/base.dart';
 import 'package:somerest/widgets/responsive.dart';
 
@@ -19,7 +22,9 @@ class RegisterState extends State<Register> {
 	final TextEditingController _passwordController = TextEditingController();
 	final TextEditingController _confirmController = TextEditingController();
 
-	
+	final http.Client _client = http.Client();
+	late String _helper;
+
 	bool? _rememberMe = false;
 	double _scrollPosition = 0;
 	double _opacity = 0;
@@ -33,7 +38,75 @@ class RegisterState extends State<Register> {
 	@override
 	void initState() {
 		_scrollController.addListener(_scrollListener);
+		_helper = "Hello";
 		super.initState();
+	}
+
+	Future finishRegistration() async {
+		final String name = _nameController.text.trim();
+		final String email = _emailController.text.trim();
+		final String phone = _phoneController.text.trim();
+		final String password = _passwordController.text.trim();
+		final String confirm = _confirmController.text.trim();
+
+		int emptyCount = 0;
+
+		if(name.isEmpty) {
+			emptyCount++;
+		}
+
+		if(email.isEmpty) {
+			emptyCount++;
+		}
+
+		if(phone.isEmpty) {
+			emptyCount++;
+		}
+
+		if(password.isEmpty) {
+			emptyCount++;
+		}
+
+		if(confirm.isEmpty) {
+			emptyCount++;
+		}
+
+		if(emptyCount > 0) {
+			return;
+		}
+
+		if(confirm != password) {
+			return;
+		}
+
+		http.Response response = await _client.post(
+			Uri.parse("http://localhost/auth/register"),
+			headers:{
+				"Content-Type": "application/json",
+			},
+			encoding: Encoding.getByName("UTF-8"),
+			body: jsonEncode({
+				"name": name,
+				"email": email,
+				"phone": phone,
+				"password": password,
+				"dob": "22222222"
+			})
+		);
+
+		Map data = jsonDecode(response.body);
+
+		if(response.statusCode == 200) {
+			setState(() {
+				_helper = data['data'];
+			});
+
+			final token = data['data']; 
+		}	else  {
+			setState(() {
+				_helper = data['report'];
+			});
+		}
 	}
 
 	@override
@@ -72,7 +145,7 @@ class RegisterState extends State<Register> {
 				controller: _scrollController,
 				physics: const ClampingScrollPhysics(),
 				child: Container(
-					color: ResponsiveWidget.isLargeScreen(context) ? const Color(0xFF051441) : Colors.white,
+					color: ResponsiveWidget.isLargeScreen(context) ? const Color(0x55000000) : Colors.white,
 					child: Column(
 						crossAxisAlignment: CrossAxisAlignment.center,
 						children: [
@@ -261,9 +334,7 @@ class RegisterState extends State<Register> {
 													color: Colors.blue,
 												),
 												child: TextButton(
-													onPressed: () {
-
-													},
+													onPressed: finishRegistration,
 													child: const Text(
 														"Register",
 														style: TextStyle(
@@ -530,9 +601,7 @@ class RegisterState extends State<Register> {
 																	color: Colors.blue,
 																),
 																child: TextButton(
-																	onPressed: () {
-
-																	},
+																	onPressed: finishRegistration,
 																	child: const Text(
 																		"Register",
 																		style: TextStyle(
@@ -594,6 +663,10 @@ class RegisterState extends State<Register> {
 										],
 									),
 								)
+							),
+
+							Text(
+								_helper
 							)
 						]
 					),

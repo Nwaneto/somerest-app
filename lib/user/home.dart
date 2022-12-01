@@ -6,7 +6,6 @@ import 'package:somerest/user/pages/logout.dart';
 import 'package:somerest/user/pages/preferences.dart';
 import 'package:somerest/user/pages/profile.dart';
 import 'package:somerest/user/pages/settings.dart';
-import 'package:somerest/user/widgets/sidebar.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/responsive.dart';
 
@@ -126,7 +125,8 @@ class DashboardState extends State<Dashboard> {
 				controller: _scrollController,
 				physics: const ClampingScrollPhysics(),
 				child: Column(
-					crossAxisAlignment: CrossAxisAlignment.center,
+					mainAxisAlignment: MainAxisAlignment.start,
+					crossAxisAlignment: CrossAxisAlignment.start,
 					children: [
 						!ResponsiveWidget.isSmallScreen(context)
 
@@ -134,6 +134,7 @@ class DashboardState extends State<Dashboard> {
 
 						Row(
 							mainAxisAlignment: MainAxisAlignment.start,
+							crossAxisAlignment: CrossAxisAlignment.start,
 							children: [
 								// The first thing we put in this case is a sidebar for this nigga.
 								Container(
@@ -420,7 +421,16 @@ class DashboardState extends State<Dashboard> {
 						
 						:
 						
-						Column(),
+						Column(
+							mainAxisAlignment: MainAxisAlignment.start,
+							crossAxisAlignment: CrossAxisAlignment.start,
+							children: [
+								Align(
+									alignment: Alignment.topLeft,
+									child: current
+								)
+							]
+						),
 
 						// This page has a footer.
 						const Footer(),

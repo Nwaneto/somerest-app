@@ -321,7 +321,7 @@ class AboutPageState extends State<AboutPage> {
 
 							// For the next section, we need these to come before the styling rings.
 							Container(
-								margin: const EdgeInsets.only(bottom: 70),
+								margin: const EdgeInsets.only(bottom: 70, top: 20),
 								width: screenSize.width * 0.9,
 								child: Column(
 								crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -829,7 +829,7 @@ class AboutPageState extends State<AboutPage> {
 						mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 						children: [
 							Container(
-							  margin: const EdgeInsets.only(top: 30, bottom: 40),
+							  margin: const EdgeInsets.only(top: 50, bottom: 40),
 							  child: Column(
 								crossAxisAlignment: CrossAxisAlignment.center,
 								children: [

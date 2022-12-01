@@ -15,10 +15,22 @@ class _TopBarContentsState extends State<TopBarContents> {
 		false,
 		false,
 		false,
+		false,
 		false
 	];
 
-	final int page = -1;
+	int page = 4;
+
+	@override
+	void initState() {
+		super.initState();
+	}
+
+	void switchTo(int page) {
+		_isHovering[page] = false;
+		this.page = page;
+	}
+
 
 	@override
 	Widget build(BuildContext context) {
@@ -30,7 +42,7 @@ class _TopBarContentsState extends State<TopBarContents> {
 			mainAxisSize: MainAxisSize.max,
 			direction: Axis.vertical,
 			children: [
-			Expanded(
+				Expanded(
 					child: Row (
 					mainAxisAlignment: MainAxisAlignment.start,
 					children: [

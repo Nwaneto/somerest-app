@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:somerest/topbar/base.dart';
-import 'package:somerest/widgets/request.dart';
 import 'package:somerest/widgets/responsive.dart';
 
 import 'package:somerest/widgets/menu_drawer.dart';
@@ -19,7 +17,7 @@ class LoginState extends State<Login> {
 	final ScrollController _scrollController = ScrollController();
 	final TextEditingController _emailController = TextEditingController();
 	final TextEditingController _passwordController = TextEditingController();
-	final SendRequest requester = SendRequest();
+	final http.Client _client = http.Client();
 
 	bool? _rememberMe = false;
 	double _scrollPosition = 0;
@@ -37,11 +35,52 @@ class LoginState extends State<Login> {
 		super.initState();
 	}
 
-	void finishLogin() {
-		String email = _emailController.text;
-		String password = _passwordController.text;
+	Future finishLogin() async {
+		final String email = _emailController.text.trim();
+		final String password = _passwordController.text.trim();
 
-		debugger(when: email.isEmpty || password.isEmpty, message: "Tsk, please write an email and password.");
+		int emptyCount = 0;
+
+		if(email.isEmpty) {
+			emptyCount++;
+		}
+
+		if(password.isEmpty) {
+			emptyCount++;
+		}
+
+		if(emptyCount > 0) {
+			return;
+		}
+
+		http.Response response = await _client.post(
+			Uri.parse("http://localhost/auth/login"),
+			headers:{
+				"Content-Type": "application/json",
+			},
+			encoding: Encoding.getByName("UTF-8"),
+			body: jsonEncode({
+				"email": email,
+				"password": password,
+			})
+		);
+
+		Map data = jsonDecode(response.body);
+
+		if(response.statusCode == 200) {
+			final token = data['data'];
+
+			// Save the token first....
+			// Then move forward.
+			advance();
+		}
+
+		else {
+			print(data['message']);
+		}
+	}
+
+	void advance() {
 		Navigator.of(context).pushNamed("/user/home");
 	}
 
@@ -81,7 +120,7 @@ class LoginState extends State<Login> {
 				controller: _scrollController,
 				physics: const ClampingScrollPhysics(),
 				child: Container(
-					color: ResponsiveWidget.isLargeScreen(context) ? const Color(0xFF051441) : Colors.white,
+					color: ResponsiveWidget.isLargeScreen(context) ? const Color(0x55000000) : Colors.white,
 					child: Column(
 						crossAxisAlignment: CrossAxisAlignment.center,
 						children: [
@@ -188,9 +227,7 @@ class LoginState extends State<Login> {
 										Align(
 											alignment: Alignment.centerRight,
 											child: TextButton(
-												onPressed: () {
-													finishLogin();
-												},
+												onPressed: finishLogin,
 												style: TextButton.styleFrom(
 													padding: EdgeInsets.zero,
 													tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -248,9 +285,7 @@ class LoginState extends State<Login> {
 													color: Colors.blue,
 												),
 												child: TextButton(
-													onPressed: () {
-														finishLogin();
-													},
+													onPressed: finishLogin,
 													child: const Text(
 														"Login",
 														style: TextStyle(
@@ -495,9 +530,7 @@ class LoginState extends State<Login> {
 																	color: Colors.blue,
 																),
 																child: TextButton(
-																	onPressed: () {
-																		finishLogin();
-																	},
+																	onPressed: finishLogin,
 																	child: const Text(
 																		"Login",
 																		style: TextStyle(
