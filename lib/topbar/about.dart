@@ -40,7 +40,7 @@ class _AboutTopBarContentsState extends State<AboutTopBarContents> {
 						margin: const EdgeInsets.only(top: 10),
 						child: Image.asset (
 								"assets/images/logo.png",
-								scale: 50,
+								scale: 5,
 								fit: BoxFit.scaleDown,
 								filterQuality: FilterQuality.high,
 							)

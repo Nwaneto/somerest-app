@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:somerest/widgets/responsive.dart';
 
@@ -40,12 +41,11 @@ class _UserBarState extends State<UserBar> {
 						margin: const EdgeInsets.only(top: 10),
 						child: Image.asset (
 								"assets/images/logo.png",
-								scale: 50,
+								scale: 5,
 								fit: BoxFit.scaleDown,
 								filterQuality: FilterQuality.high,
 							)
 					),
-
 
 					// Home
 					const SizedBox(width: 60),
@@ -70,7 +70,7 @@ class _UserBarState extends State<UserBar> {
 							'HOME',
 							style: TextStyle(
 								color: _isHovering[0] || page == 0
-									? Color(0xFF077bd7)
+									? const Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
 							),
@@ -137,8 +137,6 @@ class _UserBarState extends State<UserBar> {
 						),
 					),
 
-
-
 					// Services
 					const SizedBox(width: 20),
 					InkWell(
@@ -162,7 +160,7 @@ class _UserBarState extends State<UserBar> {
 							'SERVICES',
 							style: TextStyle(
 								color: _isHovering[2] || page  == 2
-									? Color(0xFF077bd7)
+									? const Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
 							),
@@ -208,7 +206,7 @@ class _UserBarState extends State<UserBar> {
 							'CONTACT',
 							style: TextStyle(
 								color: _isHovering[3] || page == 3
-									? Color(0xFF077bd7)
+									? const Color(0xFF077bd7)
 									: Colors.grey,
 								fontSize: 16
 							),
@@ -222,7 +220,7 @@ class _UserBarState extends State<UserBar> {
 							child: Container(
 								height: 2,
 								width: 20,
-								color: Color(0xFF051441),
+								color: const Color(0xFF051441),
 							),
 							)
 						],
@@ -231,78 +229,29 @@ class _UserBarState extends State<UserBar> {
 
 
 					// Submit CV
-					SizedBox(width: ResponsiveWidget.isLargeScreen(context)?  screenSize.width * 0.25
+					SizedBox(width: ResponsiveWidget.isLargeScreen(context)?  screenSize.width * 0.20
 					: 40),
+
+					// Your notifications
 					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
+						decoration: BoxDecoration(
+							borderRadius: BorderRadius.circular(10000),
+							color: const Color(0x55077bd7)
 						),
-						child: TextButton (
+						child: IconButton(
 							onPressed: () {
-								Navigator.of(context).pushNamed("/submit_cv");
+								// Do something...?
 							},
-							child: const Text(
-								"Submit CV",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
+							icon: const Icon(CupertinoIcons.bell)
 						),
 					),
 
+					const SizedBox(width: 20),
 
-					// Login
-					const SizedBox(width: 10),
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
-						),
-						child: TextButton (
-							onPressed: () {
-								Navigator.of(context).pushNamed("/login");
-							},
-							child: const Text(
-								"Login",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
-						),
-					),
-
-						
-					// Book a Meeting
-					const SizedBox(width: 10),
-					Container(
-						margin: const EdgeInsets.only(top: 10),
-						padding: const EdgeInsets.all(2),
-						decoration:  BoxDecoration(
-							color: const Color(0xFF077bd7),
-							borderRadius: BorderRadius.circular(20)
-						),
-						child: TextButton (
-							onPressed: () {
-								Navigator.of(context).pushNamed("/request_meeting");
-							},
-							child: const Text(
-								"Book A Meeting",
-								style:  TextStyle(
-									color: Colors.white,
-									fontSize: 12
-								),
-							)
-						),
-					),
-					],
-				),
+					const CircleAvatar(
+						backgroundImage: AssetImage("assets/images/facial2.png"),
+					)
+				]),
 				),
 
 			]),

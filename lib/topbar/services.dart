@@ -42,7 +42,7 @@ class _ServicesTopBarContentsState extends State<ServicesTopBarContents> {
 						margin: const EdgeInsets.only(top: 10),
 						child: Image.asset (
 								"assets/images/logo.png",
-								scale: 50,
+								scale: 5,
 								fit: BoxFit.scaleDown,
 								filterQuality: FilterQuality.high,
 							)

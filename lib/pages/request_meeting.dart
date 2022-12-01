@@ -53,7 +53,7 @@ class RequestMeetingState extends State<RequestMeeting> {
 				centerTitle: true,
 				title: Image.asset(
 				  "assets/images/logo.png",
-				  scale: 50,
+				  scale: 5,
 				  fit: BoxFit.scaleDown,
 				  filterQuality: FilterQuality.high,
 				))

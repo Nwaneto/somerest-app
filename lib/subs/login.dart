@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:somerest/topbar/base.dart';
+import 'package:somerest/widgets/request.dart';
 import 'package:somerest/widgets/responsive.dart';
 
 import 'package:somerest/widgets/menu_drawer.dart';
@@ -15,7 +19,8 @@ class LoginState extends State<Login> {
 	final ScrollController _scrollController = ScrollController();
 	final TextEditingController _emailController = TextEditingController();
 	final TextEditingController _passwordController = TextEditingController();
-	
+	final SendRequest requester = SendRequest();
+
 	bool? _rememberMe = false;
 	double _scrollPosition = 0;
 	double _opacity = 0;
@@ -30,6 +35,14 @@ class LoginState extends State<Login> {
 	void initState() {
 		_scrollController.addListener(_scrollListener);
 		super.initState();
+	}
+
+	void finishLogin() {
+		String email = _emailController.text;
+		String password = _passwordController.text;
+
+		debugger(when: email.isEmpty || password.isEmpty, message: "Tsk, please write an email and password.");
+		Navigator.of(context).pushNamed("/user/home");
 	}
 
 	@override
@@ -48,7 +61,7 @@ class LoginState extends State<Login> {
 				centerTitle: true,
 				title: Image.asset(
 					"assets/images/logo.png",
-					scale: 50,
+					scale: 5,
 					fit: BoxFit.scaleDown,
 					filterQuality: FilterQuality.high,
 				))
@@ -176,7 +189,7 @@ class LoginState extends State<Login> {
 											alignment: Alignment.centerRight,
 											child: TextButton(
 												onPressed: () {
-
+													finishLogin();
 												},
 												style: TextButton.styleFrom(
 													padding: EdgeInsets.zero,
@@ -220,7 +233,8 @@ class LoginState extends State<Login> {
 															color: Colors.blue,
 															fontSize: 14
 														)
-													),																],
+													),
+												],
 											)
 										),
 
@@ -235,7 +249,7 @@ class LoginState extends State<Login> {
 												),
 												child: TextButton(
 													onPressed: () {
-
+														finishLogin();
 													},
 													child: const Text(
 														"Login",
@@ -258,7 +272,7 @@ class LoginState extends State<Login> {
 												crossAxisAlignment: CrossAxisAlignment.center,
 												children: [
 													const Text(
-														"Already have an account?",
+														"Don't have an account?",
 														textAlign: TextAlign.start,
 														style: TextStyle(
 															color: Colors.black,
@@ -482,7 +496,7 @@ class LoginState extends State<Login> {
 																),
 																child: TextButton(
 																	onPressed: () {
-
+																		finishLogin();
 																	},
 																	child: const Text(
 																		"Login",

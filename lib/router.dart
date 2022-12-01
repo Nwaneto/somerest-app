@@ -14,6 +14,7 @@ import 'package:somerest/subs/login.dart';
 import 'package:somerest/subs/meet_ceo.dart';
 import 'package:somerest/subs/register.dart';
 import 'package:somerest/subs/submit_resume.dart';
+import 'package:somerest/user/home.dart';
 
 class RouterGenerator {
 	static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -66,10 +67,7 @@ class RouterGenerator {
 			}
 
 			case "/submit_cv":
-			case "\\submit_cv": {
-				return MaterialPageRoute(builder: (_) => const SubmitResume());
-			}
-
+			case "\\submit_cv": 
 			case "/find_a_job":
 			case "\\find_a_job": 
 			case "/login":
@@ -85,6 +83,10 @@ class RouterGenerator {
 			case "/ceo":
 			case "\\ceo": {
 				return MaterialPageRoute(builder: (_) => const MeetCEO());
+			}
+
+			case "/user/home": {
+				return MaterialPageRoute(builder: (_) => const Dashboard());
 			}
 
 			default: {
