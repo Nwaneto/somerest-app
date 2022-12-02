@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:somerest/logs.dart';
 import 'package:somerest/topbar/base.dart';
+import 'package:somerest/widgets/notification.dart';
 import 'package:somerest/widgets/responsive.dart';
 
 import 'package:somerest/widgets/menu_drawer.dart';
@@ -70,7 +71,12 @@ class LoginState extends State<Login> {
 		Map data = jsonDecode(response.body);
 
 		if(response.statusCode == 200) {
-			final token = data['data'];
+			final report = data['data'];
+			final email = report['email'];
+			final phone = report['phone'];
+			final id = report['id'];
+			final token = report['token'];
+			final name = report['name'];
 			final LocalStorage storage = LocalStorage();
 			
 			// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
@@ -78,6 +84,10 @@ class LoginState extends State<Login> {
 
 			// Now that we have saved the authentication token...
 			storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+			storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
+			storage.saveInt(LocalStorage.KEY_USER_UID, id);
+			storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
+			storage.saveString(LocalStorage.KEY_USER_NAME, name);
 
 			// We save the authentication token expiry period
 			storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
@@ -87,8 +97,12 @@ class LoginState extends State<Login> {
 		}
 
 		else {
-			print(data['message']);
+			_showError(data['report']);
 		}
+	}
+
+	void _showError(String error) {
+		NotificationHelper.showError(context, error);
 	}
 
 	void advance() {

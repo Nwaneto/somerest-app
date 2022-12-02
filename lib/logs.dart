@@ -8,6 +8,11 @@ class LocalStorage {
 
 	static const String KEY_AUTH_EXPIRATION = "SWS-Auth-Expiration";
 
+	static const String KEY_USER_NAME = "SWS-Auth-Name";
+	static const String KEY_USER_EMAIL = "SWS-Auth-Email";
+	static const String KEY_USER_PHONE = "SWS-Auth-Phone";
+	static const String KEY_USER_UID = "SWS-Auth-UserID";
+
 	Future saveString(String key, String value) async {
 		SharedPreferences storage = await SharedPreferences.getInstance();
 		storage.setString(key, value);

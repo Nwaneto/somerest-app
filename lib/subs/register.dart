@@ -96,14 +96,23 @@ class RegisterState extends State<Register> {
 			Map data = jsonDecode(response.body);
 
 			if(response.statusCode == 200) {
-				final token = data['data']; // This should technically work just fine.
+				final report = data['data'];
+				final email = report['email'];
+				final phone = report['phone'];
+				final id = report['id'];
+				final token = report['token'];
+				final name = report['name'];
 				final LocalStorage storage = LocalStorage();
-
+				
 				// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
 				int expiry = DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
 
 				// Now that we have saved the authentication token...
 				storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+				storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
+				storage.saveInt(LocalStorage.KEY_USER_UID, id);
+				storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
+				storage.saveString(LocalStorage.KEY_USER_NAME, name);
 
 				// We save the authentication token expiry period
 				storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
@@ -113,7 +122,7 @@ class RegisterState extends State<Register> {
 			}
 
 			else {
-				_printError(data['message']);
+				_printError(data['report']);
 			}
 		}
 	}
