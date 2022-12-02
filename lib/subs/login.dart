@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:somerest/logs.dart';
 import 'package:somerest/topbar/base.dart';
 import 'package:somerest/widgets/responsive.dart';
 
@@ -20,6 +21,7 @@ class LoginState extends State<Login> {
 	final http.Client _client = http.Client();
 
 	bool? _rememberMe = false;
+	bool _passwordHidden = true;
 	double _scrollPosition = 0;
 	double _opacity = 0;
 
@@ -69,9 +71,18 @@ class LoginState extends State<Login> {
 
 		if(response.statusCode == 200) {
 			final token = data['data'];
+			final LocalStorage storage = LocalStorage();
+			
+			// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
+			int expiry = _rememberMe == true ? DateTime.now().millisecondsSinceEpoch : DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
 
-			// Save the token first....
-			// Then move forward.
+			// Now that we have saved the authentication token...
+			storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+
+			// We save the authentication token expiry period
+			storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
+
+			// Since that worked out fine, we need to advance to the next page.
 			advance();
 		}
 
@@ -177,9 +188,11 @@ class LoginState extends State<Login> {
 											child: TextField(
 												cursorColor: Colors.blue,
 												controller: _emailController,
+												keyboardType: TextInputType.emailAddress,
 												decoration: const InputDecoration(
 													labelText: "Email Address",
 													hintText: "Required",
+													prefixIcon: Icon(Icons.email),
 													hintStyle: TextStyle(
 														color: Colors.red
 													),
@@ -203,14 +216,28 @@ class LoginState extends State<Login> {
 											child: TextField(
 												cursorColor: Colors.blue,
 												controller: _passwordController,
-												obscureText: true,
-												decoration: const InputDecoration(
+												obscureText: _passwordHidden,
+												keyboardType: TextInputType.visiblePassword,
+												decoration: InputDecoration(
 													labelText: "Password",
 													hintText: "Required",
-													hintStyle: TextStyle(
+													prefixIcon:const Icon(Icons.lock),
+													hintStyle: const TextStyle(
 														color: Colors.red
 													),
-													border: OutlineInputBorder(
+													suffixIcon: IconButton(
+														onPressed: () {
+															setState(() {
+																_passwordHidden = !_passwordHidden;
+															});
+														},
+
+														icon: Icon(
+															_passwordHidden ?
+															Icons.visibility_off : Icons.visibility
+														) 
+													),
+													border: const OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
 														),
@@ -426,6 +453,7 @@ class LoginState extends State<Login> {
 																	hintStyle: TextStyle(
 																		color: Colors.red
 																	),
+																	prefixIcon: Icon(Icons.email),
 																	border: OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
@@ -446,14 +474,27 @@ class LoginState extends State<Login> {
 															child: TextField(
 																cursorColor: Colors.blue,
 																controller: _passwordController,
-																obscureText: true,
-																decoration: const InputDecoration(
+																obscureText: _passwordHidden,
+																decoration: InputDecoration(
 																	labelText: "Password",
-																	hintText: "Required",
-																	hintStyle: TextStyle(
+																	hintStyle: const TextStyle(
 																		color: Colors.red
 																	),
-																	border: OutlineInputBorder(
+																	hintText: "Required",
+																	prefixIcon: const Icon(Icons.lock),
+																	suffixIcon: IconButton(
+																		onPressed: () {
+																			setState(() {
+																				_passwordHidden = !_passwordHidden;
+																			});
+																		},
+
+																		icon: Icon(
+																			_passwordHidden ?
+																			Icons.visibility_off : Icons.visibility
+																		) 
+																	),
+																	border: const OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
 																		),

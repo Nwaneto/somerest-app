@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:somerest/logs.dart';
 import 'package:somerest/topbar/base.dart';
+import 'package:somerest/widgets/notification.dart';
 import 'package:somerest/widgets/responsive.dart';
 
 import 'package:somerest/widgets/menu_drawer.dart';
@@ -25,7 +27,8 @@ class RegisterState extends State<Register> {
 	final http.Client _client = http.Client();
 	late String _helper;
 
-	bool? _rememberMe = false;
+	bool _passwordHidden = true;
+	bool _confirmHidden = true;
 	double _scrollPosition = 0;
 	double _opacity = 0;
 
@@ -49,64 +52,78 @@ class RegisterState extends State<Register> {
 		final String password = _passwordController.text.trim();
 		final String confirm = _confirmController.text.trim();
 
-		int emptyCount = 0;
-
 		if(name.isEmpty) {
-			emptyCount++;
+			NotificationHelper.showError(context, "You are required to specify your first name");
+			
 		}
 
-		if(email.isEmpty) {
-			emptyCount++;
+		else if(email.isEmpty) {
+			NotificationHelper.showError(context, "You are required to specify your email address.");
 		}
 
-		if(phone.isEmpty) {
-			emptyCount++;
+		else if(phone.isEmpty) {
+			NotificationHelper.showError(context, "You are required to specify your phone number.");
 		}
 
-		if(password.isEmpty) {
-			emptyCount++;
+		else if(password.isEmpty) {
+			NotificationHelper.showError(context, "Password cannot be empty");
 		}
 
-		if(confirm.isEmpty) {
-			emptyCount++;
+		else if(confirm.isEmpty) {
+			NotificationHelper.showError(context, "Second password cannot be empty.");
 		}
 
-		if(emptyCount > 0) {
-			return;
+		else if(confirm != password) {
+			NotificationHelper.showError(context, "The two passwords do not match.");	
 		}
 
-		if(confirm != password) {
-			return;
+		else {
+			http.Response response = await _client.post(
+				Uri.parse("http://localhost/auth/register"),
+				headers:{
+					"Content-Type": "application/json",
+				},
+				encoding: Encoding.getByName("UTF-8"),
+				body: jsonEncode({
+					"name": name,
+					"email": email,
+					"phone": phone,
+					"password": password,
+					"dob": "22222222"
+				})
+			);
+
+			Map data = jsonDecode(response.body);
+
+			if(response.statusCode == 200) {
+				final token = data['data']; // This should technically work just fine.
+				final LocalStorage storage = LocalStorage();
+
+				// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
+				int expiry = DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
+
+				// Now that we have saved the authentication token...
+				storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+
+				// We save the authentication token expiry period
+				storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
+
+				// Since that worked out fine, we need to advance to the next page.
+				_advance();
+			}
+
+			else {
+				_printError(data['message']);
+			}
 		}
+	}
 
-		http.Response response = await _client.post(
-			Uri.parse("http://localhost/auth/register"),
-			headers:{
-				"Content-Type": "application/json",
-			},
-			encoding: Encoding.getByName("UTF-8"),
-			body: jsonEncode({
-				"name": name,
-				"email": email,
-				"phone": phone,
-				"password": password,
-				"dob": "22222222"
-			})
-		);
+	void _printError(String error) {
+		NotificationHelper.showError(context, error);
+	}
 
-		Map data = jsonDecode(response.body);
-
-		if(response.statusCode == 200) {
-			setState(() {
-				_helper = data['data'];
-			});
-
-			final token = data['data']; 
-		}	else  {
-			setState(() {
-				_helper = data['report'];
-			});
-		}
+	void _advance() {
+		Navigator.of(context).pushNamed("/user/home");
 	}
 
 	@override
@@ -208,6 +225,7 @@ class RegisterState extends State<Register> {
 													hintStyle: TextStyle(
 														color: Colors.red
 													),
+													prefixIcon: Icon(Icons.account_box),
 													border: OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
@@ -233,6 +251,7 @@ class RegisterState extends State<Register> {
 													hintStyle: TextStyle(
 														color: Colors.red
 													),
+													prefixIcon: Icon(Icons.email),
 													border: OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
@@ -258,6 +277,7 @@ class RegisterState extends State<Register> {
 													hintStyle: TextStyle(
 														color: Colors.red
 													),
+													prefixIcon: Icon(Icons.call),
 													border: OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
@@ -277,14 +297,27 @@ class RegisterState extends State<Register> {
 											child: TextField(
 												cursorColor: Colors.blue,
 												controller: _passwordController,
-												obscureText: true,
-												decoration: const InputDecoration(
+												obscureText: _passwordHidden,
+												decoration: InputDecoration(
 													labelText: "Password",
 													hintText: "Required",
-													hintStyle: TextStyle(
+													hintStyle: const TextStyle(
 														color: Colors.red
 													),
-													border: OutlineInputBorder(
+													prefixIcon: const Icon(Icons.lock_open),
+													suffixIcon: IconButton(
+														onPressed: () {
+															setState(() {
+																_passwordHidden = !_passwordHidden;
+															});
+														},
+
+														icon: Icon(
+															_passwordHidden ?
+															Icons.visibility_off : Icons.visibility
+														) 
+													),
+													border: const OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
 														),
@@ -303,14 +336,27 @@ class RegisterState extends State<Register> {
 											child: TextField(
 												cursorColor: Colors.blue,
 												controller: _confirmController,
-												obscureText: true,
-												decoration: const InputDecoration(
+												obscureText: _confirmHidden,
+												decoration: InputDecoration(
 													labelText: "Confirm Password",
 													hintText: "Required",
-													hintStyle: TextStyle(
+													hintStyle: const TextStyle(
 														color: Colors.red
 													),
-													border: OutlineInputBorder(
+													prefixIcon: const Icon(Icons.lock),
+													suffixIcon: IconButton(
+														onPressed: () {
+															setState(() {
+																_confirmHidden = !_confirmHidden;
+															});
+														},
+
+														icon: Icon(
+															_confirmHidden ?
+															Icons.visibility_off : Icons.visibility
+														) 
+													),
+													border: const OutlineInputBorder(
 														borderRadius: BorderRadius.all(
 															Radius.circular(10)
 														),
@@ -475,6 +521,7 @@ class RegisterState extends State<Register> {
 																	hintStyle: TextStyle(
 																		color: Colors.red
 																	),
+																	prefixIcon: Icon(Icons.account_box),
 																	border: OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
@@ -500,6 +547,7 @@ class RegisterState extends State<Register> {
 																	hintStyle: TextStyle(
 																		color: Colors.red
 																	),
+																	prefixIcon: Icon(Icons.email),
 																	border: OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
@@ -525,6 +573,7 @@ class RegisterState extends State<Register> {
 																	hintStyle: TextStyle(
 																		color: Colors.red
 																	),
+																	prefixIcon: Icon(Icons.call),
 																	border: OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
@@ -544,14 +593,27 @@ class RegisterState extends State<Register> {
 															child: TextField(
 																cursorColor: Colors.blue,
 																controller: _passwordController,
-																obscureText: true,
-																decoration: const InputDecoration(
+																obscureText: _passwordHidden,
+																decoration: InputDecoration(
 																	labelText: "Password",
 																	hintText: "Required",
-																	hintStyle: TextStyle(
+																	hintStyle: const TextStyle(
 																		color: Colors.red
 																	),
-																	border: OutlineInputBorder(
+																	prefixIcon: const Icon(Icons.lock_open),
+																	suffixIcon: IconButton(
+																		onPressed: () {
+																			setState(() {
+																				_passwordHidden = !_passwordHidden;
+																			});
+																		},
+
+																		icon: Icon(
+																			_passwordHidden ?
+																			Icons.visibility_off : Icons.visibility
+																		) 
+																	),
+																	border: const OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
 																		),
@@ -570,14 +632,27 @@ class RegisterState extends State<Register> {
 															child: TextField(
 																cursorColor: Colors.blue,
 																controller: _confirmController,
-																obscureText: true,
-																decoration: const InputDecoration(
+																obscureText: _confirmHidden,
+																decoration: InputDecoration(
 																	labelText: "Confirm Password",
 																	hintText: "Required",
-																	hintStyle: TextStyle(
+																	hintStyle: const TextStyle(
 																		color: Colors.red
 																	),
-																	border: OutlineInputBorder(
+																	prefixIcon: const Icon(Icons.lock),
+																	suffixIcon: IconButton(
+																		onPressed: () {
+																			setState(() {
+																				_confirmHidden = !_confirmHidden;
+																			});
+																		},
+
+																		icon: Icon(
+																			_confirmHidden ?
+																			Icons.visibility_off : Icons.visibility
+																		) 
+																	),
+																	border: const OutlineInputBorder(
 																		borderRadius: BorderRadius.all(
 																			Radius.circular(10)
 																		),

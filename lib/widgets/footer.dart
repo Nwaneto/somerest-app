@@ -686,10 +686,40 @@ class FooterState extends State<Footer> {
 								color: Colors.white,
 								fontWeight: FontWeight.w900),
 							),
-							Row(children: const [
-							//   IconButton(
-							//       onPressed: () {},
-							//       icon: Image.asset(""))
+							Row(children: [
+								IconButton(
+									onPressed: () {
+
+									},
+
+									icon: Image.asset("assets/images/insta.png"),
+								),
+
+
+								IconButton(
+									onPressed: () {
+
+									},
+
+									icon: Image.asset("assets/images/linkedin.png"),
+								),
+
+
+								IconButton(
+									onPressed: () {
+
+									},
+
+									icon: Image.asset("assets/images/fb.png"),
+								),
+
+								IconButton(
+									onPressed: () {
+
+									},
+
+									icon: Image.asset("assets/images/twitter.png"),
+								),
 							])
 						])
 					)

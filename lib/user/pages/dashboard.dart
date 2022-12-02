@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:somerest/user/data/post.dart';
+import 'package:somerest/user/widgets/job_listing.dart';
 
 class UserHome extends StatefulWidget {
 	@override
@@ -327,8 +328,7 @@ class UserHomeState extends State<UserHome> {
 							crossAxisAlignment: CrossAxisAlignment.stretch,
 							children: [
 								Container(
-									margin: const EdgeInsets.only(bottom: 70),
-									padding: const EdgeInsets.all(10),
+									padding: const EdgeInsets.all(11),
 									decoration: BoxDecoration(
 										color: const Color(0x33077bd7),
 										borderRadius: BorderRadius.circular(10)
@@ -337,12 +337,12 @@ class UserHomeState extends State<UserHome> {
 										"Find Job/Job Title",
 										textAlign: TextAlign.center,
 										style: TextStyle(
-											fontSize: 17
+											fontSize: 16
 										),
 									),
 								),
 
-
+								JobListing()
 							],
 						)
 					)
