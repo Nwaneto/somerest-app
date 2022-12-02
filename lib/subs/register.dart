@@ -25,7 +25,6 @@ class RegisterState extends State<Register> {
 	final TextEditingController _confirmController = TextEditingController();
 
 	final http.Client _client = http.Client();
-	late String _helper;
 
 	bool _passwordHidden = true;
 	bool _confirmHidden = true;
@@ -41,7 +40,6 @@ class RegisterState extends State<Register> {
 	@override
 	void initState() {
 		_scrollController.addListener(_scrollListener);
-		_helper = "Hello";
 		super.initState();
 	}
 
@@ -748,10 +746,6 @@ class RegisterState extends State<Register> {
 									),
 								)
 							),
-
-							Text(
-								_helper
-							)
 						]
 					),
 				)
