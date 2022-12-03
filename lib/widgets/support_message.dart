@@ -25,7 +25,7 @@ class SupportMessageState extends State<SupportMessageWidget> {
 			decoration: BoxDecoration(
 				border: Border.all(
 					color: Colors.blueGrey,
-					width: 2,
+					width: 1,
 				),
 				borderRadius: const BorderRadius.all(Radius.circular(10)),
 			),

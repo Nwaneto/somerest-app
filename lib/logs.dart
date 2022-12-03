@@ -52,4 +52,18 @@ class LocalStorage {
 		SharedPreferences storage = await SharedPreferences.getInstance();
 		await storage.remove(key);
 	}
+
+	void clear() async {
+		SharedPreferences storage = await SharedPreferences.getInstance();
+		await storage.clear();
+		SharedPreferences.setMockInitialValues({
+			KEY_SWS_AUTH: "",
+			KEY_AUTH_EXPIRATION: 0,
+			KEY_USER_EMAIL: "",
+			KEY_USER_NAME: "",
+			KEY_USER_PHONE: "",
+			KEY_USER_UID: 0
+		});
+		
+	}
 }

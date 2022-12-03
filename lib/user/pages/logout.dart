@@ -1,5 +1,6 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
-import 'package:somerest/user/data/post.dart';
+import 'package:somerest/widgets/responsive.dart';
 
 class UserLogout extends StatefulWidget {
 	@override
@@ -7,7 +8,7 @@ class UserLogout extends StatefulWidget {
 }
 
 class UserLogoutState extends State<UserLogout> {
-	List<SomerestPost> _posts = List.empty(growable: true);
+	bool _showingDialog = false;
 
 	@override
 	void initState() {
@@ -17,7 +18,6 @@ class UserLogoutState extends State<UserLogout> {
 
 	@override
 	Widget build(BuildContext context) {
-		var screenSize = MediaQuery.of(context).size;
-		return Center(child: Text("Logout"));
+		return const SizedBox();
 	}
 }

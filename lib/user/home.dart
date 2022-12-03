@@ -1,3 +1,4 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:somerest/logs.dart';
 import 'package:somerest/topbar/user.dart';
@@ -43,6 +44,8 @@ class DashboardState extends State<Dashboard> {
 
 	int selectedIndex  = 0;
 
+	bool _showingDialog = false;
+
 	final ScrollController _scrollController = ScrollController();
 	
 	_scrollListener() {
@@ -51,8 +54,94 @@ class DashboardState extends State<Dashboard> {
 		});
 	}
 
-	Widget switchCurrent(int i) {
+		void _showOptions(BuildContext context) async {
+			var screenSize = MediaQuery.of(context).size;
+			await showFlash(
+				context: context,
+				builder: ((buildContext, buildController) {
+					return Flash.dialog(
+						controller: buildController,
+						backgroundColor: const Color(0x55000000),
+						child: Container(
+							alignment: Alignment.center,
+							child: Container(
+								width: ResponsiveWidget.isSmallScreen(context) ? screenSize.width * 0.9 : screenSize.width * 0.42,
+								height: 200,
+								padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+								decoration: BoxDecoration(
+									borderRadius: BorderRadius.circular(10),
+									color: Colors.white,
+								),
+								child: 
 
+								Column(
+									mainAxisAlignment: MainAxisAlignment.spaceBetween,
+									crossAxisAlignment: CrossAxisAlignment.start,
+									children: [
+										Row(
+											mainAxisAlignment: MainAxisAlignment.spaceBetween,
+											children: [
+												const Text(
+													"Do you really want to log out?",
+													style: TextStyle(
+														fontSize: 16
+													)
+												),
+
+
+												IconButton(
+													onPressed: () {
+														buildController.dismiss();
+													}, 
+													icon: const Icon(
+														Icons.cancel_outlined,
+														color: Colors.red
+													)
+												)
+											],
+										),
+
+										Row(
+											mainAxisAlignment: MainAxisAlignment.end,
+											children: [
+												TextButton(
+													onPressed: () {
+														buildController.dismiss();
+													},
+													child: const Text(
+														"No",
+														style: TextStyle(
+															fontSize: 18
+														),
+													)
+												),
+
+												TextButton(
+													onPressed: () {
+														buildController.dismiss();
+														_storage.clear();
+														Navigator.of(context).pushNamed("/");
+													},
+													child: const Text(
+														"Yes",
+														style: TextStyle(
+															fontSize: 18
+														),
+													)
+												),
+											],
+										)
+									],
+								),
+							),
+						)
+					);
+				})
+			);
+			_showingDialog = false;
+		}
+
+	Widget switchCurrent(int i) {
 		if(i > 6 || i < 0) {
 			throw UnimplementedError("No such page with this  index here");
 		}
@@ -80,6 +169,7 @@ class DashboardState extends State<Dashboard> {
 			}
 
 			case 5: {
+				_showOptions(context);
 				return UserLogout();
 			}
 			
