@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:somerest/logs.dart';
 import 'package:somerest/topbar/user.dart';
 import 'package:somerest/user/pages/application.dart';
 import 'package:somerest/user/pages/dashboard.dart';
 import 'package:somerest/user/pages/logout.dart';
+import 'package:somerest/user/pages/notifications.dart';
 import 'package:somerest/user/pages/preferences.dart';
 import 'package:somerest/user/pages/profile.dart';
 import 'package:somerest/user/pages/settings.dart';
+import 'package:somerest/user/widgets/menu_drawer.dart';
 import 'package:somerest/widgets/footer.dart';
 import 'package:somerest/widgets/responsive.dart';
-
-import 'package:somerest/widgets/menu_drawer.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -19,14 +20,19 @@ class Dashboard extends StatefulWidget {
 }
 
 class DashboardState extends State<Dashboard> {
-	final ScrollController _scrollController = ScrollController();
 	late Widget current;
-	String _name = "Hello";
+	String _name = "Mock Name";
+	final LocalStorage _storage = LocalStorage.getInstance();
+	final UserDrawer _drawer = UserDrawer();
 
 	double _scrollPosition = 0;
 	double _opacity = 0;
 
+
+
 	final List selected = [
+		false,
+		false,
 		false,
 		false,
 		false,
@@ -37,6 +43,8 @@ class DashboardState extends State<Dashboard> {
 
 	int selectedIndex  = 0;
 
+	final ScrollController _scrollController = ScrollController();
+	
 	_scrollListener() {
 		setState(() {
 			_scrollPosition = _scrollController.position.pixels;
@@ -44,7 +52,8 @@ class DashboardState extends State<Dashboard> {
 	}
 
 	Widget switchCurrent(int i) {
-		if(i > 5 || i < 0) {
+
+		if(i > 6 || i < 0) {
 			throw UnimplementedError("No such page with this  index here");
 		}
 
@@ -73,6 +82,10 @@ class DashboardState extends State<Dashboard> {
 			case 5: {
 				return UserLogout();
 			}
+			
+			case 6: {
+				return UserNotifications();
+			}
 
 			default: {
 				return UserHome();
@@ -80,13 +93,19 @@ class DashboardState extends State<Dashboard> {
 		}
 	}
 
+	void _getData() async {
+		String name = await _storage.getString(LocalStorage.KEY_USER_NAME);
+		setState(() {
+			_name = name;
+		});
+	}
+
 	@override
 	void initState() {
 		_scrollController.addListener(_scrollListener);
 		super.initState();
-
+		_getData();
 		current = switchCurrent(0);
-		_name = "Christabel Uche";
 	}
 
 	@override
@@ -115,11 +134,304 @@ class DashboardState extends State<Dashboard> {
 				preferredSize: Size(screenSize.width, 60),
 				child: Container(
 					color: Colors.white.withOpacity(0.5),
-					child: UserBar()
+					child: const UserBar()
 				),
 			),
 
-			drawer: const MenuDrawer(),
+			drawer: Drawer(
+				child: Container (
+				color: Colors.white,
+				child: Padding(
+
+				padding: const EdgeInsets.all(16.0),
+				child: Column(
+					crossAxisAlignment: CrossAxisAlignment.start,
+					mainAxisAlignment: MainAxisAlignment.start,
+					children: [
+						Image.asset("assets/images/facial2.png"),
+
+						// Margin
+						const SizedBox(height: 5),
+
+						// Next, the profile name.
+						Text(
+							_name,
+							textAlign: TextAlign.center,
+							style: const TextStyle(
+								color: Colors.blue,
+								fontSize: 15
+							) 
+						),
+
+						Container(
+							margin: const EdgeInsets.only(top: 10),
+							padding: const EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
+							decoration:    BoxDecoration(
+								borderRadius: BorderRadius.circular(10),
+								color: Colors.blue
+							),
+							child: TextButton(
+								onPressed: () {
+									setState(() {
+										current = switchCurrent(1);
+									});
+								},
+								child: const Text(
+									"My Profile",
+									style: TextStyle(
+										color: Colors.white,
+										fontWeight: FontWeight.w700
+									),
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							margin: const EdgeInsets.only(top: 40),
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[7] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										Navigator.of(context).pushNamed("/");
+									},
+
+									child: Text(
+										"Go Home",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[7] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[0] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(0);
+										});
+									},
+
+									child: Text(
+										"Dashboard",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[0] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[6] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(6);
+										});
+									},
+
+									child: Text(
+										"Notifications",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[6] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[1] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(1);
+										});
+									},
+
+									child: Text(
+										"Profile",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[1] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[2] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(2);
+										});
+									},
+
+									child: Text(
+										"Application",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[2] ? Colors.white :  Colors.blue								),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[3] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(3);
+										});
+									},
+
+									child: Text(
+										"Preferences",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[3] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[4] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(4);
+										});
+									},
+
+									child: Text(
+										"Settings",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[4] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						Container(
+							height: 50,
+							padding: const EdgeInsets.only(left: 5),
+							width: screenSize.width,
+							decoration: BoxDecoration(
+								borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+								color: selected[5] ? Colors.blue :  Colors.transparent
+							),
+							child: 
+							Align(
+								alignment: Alignment.centerLeft,
+								child: TextButton(
+									onPressed: () {
+										setState(() {
+											current =  switchCurrent(5);
+										});
+									},
+
+									child: Text(
+										"Log out",
+										textAlign: TextAlign.start,
+										style: TextStyle(
+											color: selected[5] ? Colors.white :  Colors.blue
+										),
+									)
+								)
+							),
+						),
+
+						const Expanded(
+						child: Align(
+							alignment: Alignment.bottomCenter,
+							child: Text(
+								'Powered By System Works Solutions',
+								style: TextStyle(
+									color: Colors.blue,
+									fontSize: 13,
+								),
+							),
+						),
+					)
+				]),
+				),
+			),
+			),
 
 			body: SingleChildScrollView(
 				controller: _scrollController,
@@ -138,8 +450,8 @@ class DashboardState extends State<Dashboard> {
 							children: [
 								// The first thing we put in this case is a sidebar for this nigga.
 								Container(
+									width: ResponsiveWidget.isSmallScreen(context) ? null : screenSize.width * 0.18,
 									padding: const EdgeInsets.only(top: 40, right: 10),
-									width: screenSize.width * 0.18,
 									color: const Color(0xBB000000),
 									child: Column(
 										crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,6 +465,7 @@ class DashboardState extends State<Dashboard> {
 											// Next, the profile name.
 											Text(
 												_name,
+												textAlign: TextAlign.center,
 												style: const TextStyle(
 													color: Colors.white,
 													fontSize: 17

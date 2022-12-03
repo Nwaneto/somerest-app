@@ -100,7 +100,7 @@ class RegisterState extends State<Register> {
 				final id = report['id'];
 				final token = report['token'];
 				final name = report['name'];
-				final LocalStorage storage = LocalStorage();
+				final LocalStorage storage = LocalStorage.getInstance();
 				
 				// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
 				int expiry = DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
@@ -573,6 +573,7 @@ class RegisterState extends State<Register> {
 															margin: const EdgeInsets.only(top: 20),
 															child: TextField(
 																cursorColor: Colors.blue,
+																maxLength: 14,
 																controller: _phoneController,
 																decoration: const InputDecoration(
 																	labelText: "Phone Number",

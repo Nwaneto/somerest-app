@@ -20,6 +20,7 @@ class LoginState extends State<Login> {
 	final TextEditingController _emailController = TextEditingController();
 	final TextEditingController _passwordController = TextEditingController();
 	final http.Client _client = http.Client();
+	final LocalStorage _storage = LocalStorage.getInstance();
 
 	bool? _rememberMe = false;
 	bool _passwordHidden = true;
@@ -36,6 +37,15 @@ class LoginState extends State<Login> {
 	void initState() {
 		_scrollController.addListener(_scrollListener);
 		super.initState();
+	}
+
+	void _checkPresent() async {
+		String token = await _storage.getString(LocalStorage.KEY_SWS_AUTH);
+	
+		// If for any reason, this is not empty...
+		if(token.isNotEmpty || token != "") {
+			_advance();
+		}
 	}
 
 	Future finishLogin() async {
@@ -78,23 +88,21 @@ class LoginState extends State<Login> {
 			final token = report['token'];
 			final name = report['name'];
 
-			final LocalStorage storage = LocalStorage();
-
 			// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
 			int expiry = _rememberMe == true ? DateTime.now().millisecondsSinceEpoch : DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
 
 			// Now that we have saved the authentication token...
-			storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
-			storage.saveInt(LocalStorage.KEY_USER_UID, id);
-			storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
-			storage.saveString(LocalStorage.KEY_USER_NAME, name);
+			_storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
+			_storage.saveInt(LocalStorage.KEY_USER_UID, id);
+			_storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
+			_storage.saveString(LocalStorage.KEY_USER_NAME, name);
 
 			// We save the authentication token and its expiry period
-			storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
-			storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+			_storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
+			_storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
 
 			// Since that worked out fine, we need to advance to the next page.
-			advance();
+			_advance();
 		}
 
 		else {
@@ -106,12 +114,13 @@ class LoginState extends State<Login> {
 		NotificationHelper.showError(context, error);
 	}
 
-	void advance() {
+	void _advance() {
 		Navigator.of(context).pushNamed("/user/home");
 	}
 
 	@override
 	Widget build(BuildContext context) {
+		_checkPresent();
 		var screenSize = MediaQuery.of(context).size;
 		return Scaffold(
 
