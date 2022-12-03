@@ -81,7 +81,7 @@ class JobAlertState extends State<JobAlert> {
 										mainAxisAlignment: MainAxisAlignment.spaceBetween,
 										children: [
 											Text(
-												"$position. " + current['jobTitle'] + "|" + current['jobType']  + '|' + current['frequency'],
+												"$position. " + current['jobTitle'] + " | " + current['jobType']  + ' | ' + current['frequency'],
 											),
 
 											Row(
