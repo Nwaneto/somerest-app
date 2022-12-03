@@ -11,7 +11,7 @@ class LocalStorage {
 	static const String KEY_USER_PHONE = "SWS-Auth-Phone";
 	static const String KEY_USER_UID = "SWS-Auth-UserID";
 
-	static final LocalStorage instance = LocalStorage();
+	static final LocalStorage _instance = LocalStorage();
 
 	LocalStorage() {
 		SharedPreferences.setMockInitialValues({
@@ -25,7 +25,7 @@ class LocalStorage {
 	}
 
 	static LocalStorage getInstance() {
-		return instance;
+		return _instance;
 	}
 
 	Future saveString(String key, String value) async {

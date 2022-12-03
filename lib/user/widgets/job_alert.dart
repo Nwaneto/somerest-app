@@ -36,13 +36,14 @@ class JobAlertState extends State<JobAlert> {
 	Widget build(BuildContext context) {
 		var screenSize = MediaQuery.of(context).size;
 		return Container(
+			margin: const EdgeInsets.only(bottom: 50),
 			width: ResponsiveWidget.isSmallScreen(context) ? screenSize.width : screenSize.width*0.82,
-			padding: const EdgeInsets.only(left: 10, right: 20),
+			padding: EdgeInsets.only(left: 10, right: ResponsiveWidget.isSmallScreen(context) ? 0 : 20),
 			child: Column(
 				crossAxisAlignment: CrossAxisAlignment.start,
 				children: [
 					Container(
-						padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+						padding: EdgeInsets.only(top: 5, bottom: 5, left: ResponsiveWidget.isSmallScreen(context) ? 10 : 20, right: ResponsiveWidget.isSmallScreen(context) ? 10 : 20),
 						decoration: BoxDecoration(
 							borderRadius: BorderRadius.circular(10),
 							color: Colors.blue
@@ -61,6 +62,8 @@ class JobAlertState extends State<JobAlert> {
 						),
 					),
 
+					const SizedBox(height: 30),
+
 					ListView.builder(
 						physics: const NeverScrollableScrollPhysics(),
 						shrinkWrap: true,
@@ -78,37 +81,95 @@ class JobAlertState extends State<JobAlert> {
 										borderRadius: BorderRadius.circular(10),
 									),
 									child: Row(
+										crossAxisAlignment: CrossAxisAlignment.center,
 										mainAxisAlignment: MainAxisAlignment.spaceBetween,
 										children: [
-											Text(
-												"$position. " + current['jobTitle'] + " | " + current['jobType']  + ' | ' + current['frequency'],
+											Row(
+												mainAxisAlignment: MainAxisAlignment.start,
+												children: [
+													Text(
+														"$position.  ",
+													),
+
+													ResponsiveWidget.isSmallScreen(context)
+
+													?
+
+													Column(
+														crossAxisAlignment: CrossAxisAlignment.start,
+														children: [
+															Text(
+																current['jobTitle'],
+																textAlign: TextAlign.start,
+																style: const TextStyle(
+																	fontSize: 12
+																),
+															),
+
+															Text(
+																current['jobType'],
+																textAlign: TextAlign.start,
+																style: const TextStyle(
+																	fontSize: 12
+																),
+															),
+
+															Text(
+																current['frequency'],
+																textAlign: TextAlign.start,
+																style: const TextStyle(
+																	fontSize: 12
+																),
+															),
+														],
+													)
+
+													:
+
+													Text(
+														current['jobTitle'] + " | " + current['jobType']  + ' | ' + current['frequency']
+													)
+												],
 											),
 
 											Row(
 												children: [
+													ResponsiveWidget.isSmallScreen(context)
+
+													?
+
+													const SizedBox()
+
+													:
+													
 													Text(
-														current['enabled'] ? "Active" : "Paused"
+														current['enabled'] ? "Active" : "Paused",
+														style: TextStyle(
+															fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : null,
+														)
 													),
 
-													const SizedBox(width: 3),
+													SizedBox(width: ResponsiveWidget.isSmallScreen(context) ? 0 : 3),
 
-													Switch(
-														value: current['enabled'],
-														activeColor: Colors.red,
-														onChanged: (value) {
-															setState(() {
-																current['enabled'] = !current['enabled'];  
-															});
-													}),
+													Row(
+														children: [
+															Switch(
+																value: current['enabled'],
+																activeColor: Colors.red,
+																onChanged: (value) {
+																	setState(() {
+																		current['enabled'] = !current['enabled'];  
+																	});
+															}),
 
-													const SizedBox(width: 3),
+															IconButton(
+																	onPressed: () {
 
-													IconButton(
-															onPressed: () {
-
-															},
-															icon: const Icon(Icons.edit
-														)
+																	},
+																	icon: const Icon(Icons.edit
+																)
+															)
+														],
 													)
 												],
 											)
