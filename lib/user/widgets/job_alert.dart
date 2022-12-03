@@ -1,11 +1,18 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:somerest/widgets/responsive.dart';
 
 class JobAlert extends StatefulWidget {
 	@override
 	JobAlertState createState() => JobAlertState();
+}
+
+enum AlertFrequency {
+	daily,
+	weekly,
+	monthly
 }
 
 class JobAlertState extends State<JobAlert> {
@@ -18,6 +25,9 @@ class JobAlertState extends State<JobAlert> {
 		false,
 		false
 	];
+
+	bool _showingDialog = false;
+	AlertFrequency? _frequency = AlertFrequency.daily;
 
 	@override
 	void initState() {
@@ -49,8 +59,117 @@ class JobAlertState extends State<JobAlert> {
 							color: Colors.blue
 						),
 						child: TextButton(
-							onPressed: () {
+							onPressed: () async {
+								if(_showingDialog) {
+									return;
+								}
 
+								_showingDialog = true;
+								await showFlash(
+									context: context,
+									builder: ((buildContext, buildController) {
+										return Flash.dialog(
+											controller: buildController,
+											backgroundColor: const Color(0x55000000),
+											child: Container(
+												alignment: Alignment.center,
+												child: Container(
+													width: ResponsiveWidget.isSmallScreen(context) ? screenSize.width * 0.9 : screenSize.width * 0.33,
+													height: ResponsiveWidget.isSmallScreen(context) ? screenSize.height * 0.28 : screenSize.height * 0.33,
+													padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+													decoration: BoxDecoration(
+														borderRadius: BorderRadius.circular(10),
+														color: Colors.white,
+													),
+													child: Column(
+														mainAxisAlignment: MainAxisAlignment.start,
+														crossAxisAlignment: CrossAxisAlignment.start,
+														children: [
+															Row(
+																mainAxisAlignment: MainAxisAlignment.spaceBetween,
+																children: [
+																	const Text(
+																		"Create your job alert",
+																		style: TextStyle(
+																			fontSize: 16
+																		)
+																	),
+
+
+																	IconButton(
+																		onPressed: buildController.dismiss, 
+																		icon: const Icon(
+																			Icons.cancel_outlined,
+																			color: Colors.red
+																		)
+																	)
+																],
+															),
+
+															const Divider(
+																color: Colors.grey,
+																thickness: 2,
+															),
+
+															const Text(
+																"How often do you want to be notified?",
+															),
+
+															Row(
+																mainAxisAlignment: MainAxisAlignment.spaceBetween,
+																children: [
+																	Row(
+																		children: [
+																			const Text("Daily "),
+																			Checkbox(
+																				value: _frequency == AlertFrequency.daily,
+																				onChanged: (value) {
+																					setState(() {
+																					  _frequency = AlertFrequency.daily;
+																					});
+																				}  
+																			),
+																		],
+																	),
+
+
+																	Row(
+																		children: [
+																			const Text("Weekly "),
+																			Checkbox(
+																				value: _frequency == AlertFrequency.weekly,
+																				onChanged: (value) {
+																					setState(() {
+																					  _frequency = AlertFrequency.weekly;
+																					});
+																				}  
+																			),
+																		],
+																	),
+
+																	Row(
+																		children: [
+																			const Text("Monthly "),
+																			Checkbox(
+																				value: _frequency == AlertFrequency.monthly,
+																				onChanged: (value) {
+																					setState(() {
+																					  _frequency = AlertFrequency.daily;
+																					});
+																				}  
+																			),
+																		],
+																	),
+																],
+															)
+														],
+													),
+												),
+											)
+										);
+									})
+								);
+								_showingDialog = false;
 							},
 
 							child: const Text(
