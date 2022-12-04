@@ -214,7 +214,6 @@ class UserHomeState extends State<UserHome> {
 							Align(
 								alignment: Alignment.centerRight,
 								child: Container(
-									width: screenSize.width * 0.25,
 									padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
 									decoration: BoxDecoration(
 										color: Colors.blue,
@@ -671,16 +670,6 @@ class UserHomeState extends State<UserHome> {
 									),
 								)
 							]),
-
-							Align(
-								alignment: Alignment.centerRight,
-								child: TextButton(
-									onPressed: () {
-
-									},
-									child: const Text("Filter"),
-								)
-							),
 
 							// This is the margin for stuff right now.
 							const SizedBox(height: 30),

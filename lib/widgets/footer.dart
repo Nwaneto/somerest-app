@@ -39,7 +39,7 @@ class FooterState extends State<Footer> {
 										"Somerest Consulting Limited",
 										style: TextStyle(
 										color: Colors.white,
-										fontWeight: FontWeight.w900,
+										fontWeight: FontWeight.w700,
 										)
 									)
 								),
@@ -82,7 +82,7 @@ class FooterState extends State<Footer> {
 									child: const Text("Services",
 										style: TextStyle(
 											color: Colors.white,
-											fontWeight: FontWeight.w900,
+											fontWeight: FontWeight.w700,
 										)
 									)
 								),
@@ -226,7 +226,7 @@ class FooterState extends State<Footer> {
 											child: const Text("Company",
 											style: TextStyle(
 												color: Colors.white,
-												fontWeight: FontWeight.w900,
+												fontWeight: FontWeight.w700,
 											)
 										)
 									),
@@ -479,7 +479,7 @@ class FooterState extends State<Footer> {
 												"Somerest Consulting Limited",
 												style: TextStyle(
 												color: Colors.white,
-												fontWeight: FontWeight.w900,
+												fontWeight: FontWeight.w700,
 												)
 											)
 										),
@@ -523,7 +523,7 @@ class FooterState extends State<Footer> {
 											child: const Text("Services",
 												style: TextStyle(
 													color: Colors.white,
-													fontWeight: FontWeight.w900,
+													fontWeight: FontWeight.w700,
 												)
 											)
 										),
@@ -668,7 +668,7 @@ class FooterState extends State<Footer> {
 										child: const Text("Company",
 										style: TextStyle(
 											color: Colors.white,
-											fontWeight: FontWeight.w900,
+											fontWeight: FontWeight.w700,
 										)
 									)
 								),

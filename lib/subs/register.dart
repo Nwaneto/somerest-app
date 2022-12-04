@@ -108,7 +108,7 @@ class RegisterState extends State<Register> {
 				// Now that we have saved the authentication token...
 				storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
 				storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
-				storage.saveInt(LocalStorage.KEY_USER_UID, id);
+				storage.saveInt(LocalStorage.KEY_USER_UID, int.parse(id));
 				storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
 				storage.saveString(LocalStorage.KEY_USER_NAME, name);
 

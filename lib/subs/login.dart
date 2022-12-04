@@ -78,35 +78,39 @@ class LoginState extends State<Login> {
 			})
 		);
 
-		Map data = jsonDecode(response.body);
+		try {
+			Map data = jsonDecode(response.body);
 
-		if(response.statusCode == 200) {
-			final report = data['data'];
-			final email = report['email'];
-			final phone = report['phone'];
-			final id = report['id'];
-			final token = report['token'];
-			final name = report['name'];
+			if(response.statusCode == 200) {
+				final report = data['data'];
+				final email = report['email'];
+				final phone = report['phone'];
+				final id = report['id'];
+				final token = report['token'];
+				final name = report['name'];
 
-			// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
-			int expiry = _rememberMe == true ? DateTime.now().millisecondsSinceEpoch : DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
+				// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
+				int expiry = _rememberMe == true ? DateTime.now().millisecondsSinceEpoch : DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
 
-			// Now that we have saved the authentication token...
-			_storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
-			_storage.saveInt(LocalStorage.KEY_USER_UID, id);
-			_storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
-			_storage.saveString(LocalStorage.KEY_USER_NAME, name);
+				// Now that we have saved the authentication token...
+				_storage.saveString(LocalStorage.KEY_USER_EMAIL, email);
+				_storage.saveInt(LocalStorage.KEY_USER_UID, int.parse(id));
+				_storage.saveString(LocalStorage.KEY_USER_PHONE, phone);
+				_storage.saveString(LocalStorage.KEY_USER_NAME, name);
 
-			// We save the authentication token and its expiry period
-			_storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
-			_storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
+				// We save the authentication token and its expiry period
+				_storage.saveInt(LocalStorage.KEY_AUTH_EXPIRATION, expiry);
+				_storage.saveString(LocalStorage.KEY_SWS_AUTH, token);
 
-			// Since that worked out fine, we need to advance to the next page.
-			_advance();
-		}
+				// Since that worked out fine, we need to advance to the next page.
+				_advance();
+			}
 
-		else {
-			_showError(data['report']);
+			else {
+				_showError(data['report']);
+			}
+		}	catch(e) {
+			_showError(e.toString());
 		}
 	}
 

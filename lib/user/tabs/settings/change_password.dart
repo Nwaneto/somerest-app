@@ -32,7 +32,7 @@ class ChangePasswordState extends State<ChangePassword> {
 		final String id = (await _storage.getInt(LocalStorage.KEY_USER_UID)).toString();
 
 		http.Response response = await _client.delete(
-			Uri.parse("http://api.somerest.com.ng/users/get/$id"),
+			Uri.parse("https://api.somerest.com.ng/users/get/$id"),
 			headers:{
 				"Content-Type": "application/json",
 				"SWS-Auth": token,
@@ -90,7 +90,7 @@ class ChangePasswordState extends State<ChangePassword> {
 			String token = await _storage.getString(LocalStorage.KEY_SWS_AUTH);
 			String id = (await _storage.getInt(LocalStorage.KEY_USER_UID)).toString();
 			http.Response response = await _client.put(
-				Uri.parse("http://api.somerest.com.ng/auth/change_password"),
+				Uri.parse("https://api.somerest.com.ng/auth/change_password"),
 				headers:{
 					"Content-Type": "application/json",
 					LocalStorage.KEY_SWS_AUTH: token

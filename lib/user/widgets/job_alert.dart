@@ -348,6 +348,8 @@ class JobAlertState extends State<JobAlert> {
 																			child: const Text("Finish")
 																		),
 
+																		SizedBox(width: ResponsiveWidget.isSmallScreen(context) ? 0 : 20),
+
 																		IconButton(
 																			onPressed: () {
 																				buildController.dismiss();
