@@ -342,6 +342,7 @@ class FooterState extends State<Footer> {
 							margin: const EdgeInsets.only(left: 20),
 							child: Column(
 							mainAxisAlignment: MainAxisAlignment.start,
+							crossAxisAlignment: CrossAxisAlignment.start,
 							children: [
 								const Text(
 								'Get to know us better',
@@ -349,11 +350,109 @@ class FooterState extends State<Footer> {
 									color: Colors.white,
 									fontWeight: FontWeight.w900),
 								),
-								Row(children: const [
-								//   IconButton(
-								//       onPressed: () {},
-								//       icon: Image.asset(""))
-								])
+
+								const SizedBox(height: 10),
+
+								Row(
+									mainAxisAlignment: MainAxisAlignment.start,
+									children: [
+								TextButton(
+									onPressed: () {
+										// Instagram
+									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+
+									child: const Text(
+										"l",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
+								),
+
+								const SizedBox(width: 10),
+
+
+								TextButton(
+									onPressed: () {
+										// Linked In
+									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+
+									child: const Text(
+										"n",
+										style: TextStyle(
+											letterSpacing: 0,
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
+								),
+
+								const SizedBox(width: 10),
+
+
+								TextButton(
+									onPressed: () {
+										// Facebook
+									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+
+									child: const Text(
+										"f",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
+								),
+
+								const SizedBox(width: 10),
+
+								TextButton(
+									onPressed: () {
+										// Twitter
+									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+
+									child: const Text(
+										"t",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
+								),
+							]),
+							
+
+
+								const SizedBox(height: 30),
 							])
 						)
 					],
@@ -681,50 +780,120 @@ class FooterState extends State<Footer> {
 						crossAxisAlignment: CrossAxisAlignment.start,
 						children: [
 							const Text(
-							'Get to know us better',
-							style: TextStyle(
-								color: Colors.white,
-								fontWeight: FontWeight.w900),
-							),
-							Row(children: [
-								IconButton(
-									onPressed: () {
-
-									},
-
-									icon: Image.asset("assets/images/insta.png"),
+								'Get to know us better',
+								style: TextStyle(
+									color: Colors.white,
+									fontWeight: FontWeight.w900),
 								),
 
+								const SizedBox(height: 10),
 
-								IconButton(
+								Row(
+									mainAxisAlignment: MainAxisAlignment.start,
+									children: [
+								TextButton(
 									onPressed: () {
-
+										// Instagram
 									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
 
-									icon: Image.asset("assets/images/linkedin.png"),
+									child: const Text(
+										"l",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
 								),
 
+								const SizedBox(width: 10),
 
-								IconButton(
+
+								TextButton(
 									onPressed: () {
-
+										// Linked In
 									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
 
-									icon: Image.asset("assets/images/fb.png"),
+									child: const Text(
+										"n",
+										style: TextStyle(
+											letterSpacing: 0,
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
 								),
 
-								IconButton(
+								const SizedBox(width: 10),
+
+
+								TextButton(
 									onPressed: () {
-
+										// Facebook
 									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
 
-									icon: Image.asset("assets/images/twitter.png"),
+									child: const Text(
+										"f",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
+								),
+
+								const SizedBox(width: 10),
+
+								TextButton(
+									onPressed: () {
+										// Twitter
+									},
+									
+									style: TextButton.styleFrom(
+										padding: EdgeInsets.zero,
+										tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+										minimumSize: const Size(1, 1),
+										alignment: Alignment.centerLeft
+									),
+
+									child: const Text(
+										"t",
+										style: TextStyle(
+											fontFamily: 'SmartphoneColorPro',
+											fontSize: 30
+										),
+									),
 								),
 							])
 						])
-					)
+					),
+
+
+
+					const SizedBox(height: 30),
 					]
 				)
+			
+			
 			),
 
 		Container(
