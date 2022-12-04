@@ -411,7 +411,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 													children: [
 														const Text(
@@ -426,7 +426,7 @@ class _HomePageState extends State<HomePage> {
 																'Admin Manager, SPAR NIGERIA (ILUPEJU)',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																color: Colors.blue,
+																color: Colors.black,
 																))),
 														const Text('Mr Sunday',
 															style: TextStyle(
@@ -443,7 +443,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 													children: [
 														const Text(
@@ -458,7 +458,7 @@ class _HomePageState extends State<HomePage> {
 																'Managing Director, AXEL',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																color: Colors.blue,
+																color: Colors.black,
 																))),
 														const Text('Mr Fabian',
 															style: TextStyle(
@@ -475,7 +475,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 													children: [
 														const Text(
@@ -490,7 +490,7 @@ class _HomePageState extends State<HomePage> {
 																'Managing Director, SPAR NIGERIA',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																color: Colors.blue,
+																color: Colors.black,
 																))),
 														const Text('Olatunde Hakeeb',
 															style: TextStyle(
@@ -507,7 +507,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 													children: [
 														const Text(
@@ -549,7 +549,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 														children: [
 														const Text(
@@ -564,7 +564,7 @@ class _HomePageState extends State<HomePage> {
 																'Admin Manager,\nSPAR NIGERIA (ILUPEJU)',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																	color: Colors.blue,
+																	color: Colors.black,
 																))),
 														const Text('Mr Sunday',
 															style: TextStyle(
@@ -581,7 +581,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 30),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 														children: [
 														const Text(
@@ -596,7 +596,7 @@ class _HomePageState extends State<HomePage> {
 																'Managing Director,\nAXEL',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																	color: Colors.blue,
+																	color: Colors.black,
 																))),
 														const Text('Mr Fabian',
 															style: TextStyle(
@@ -619,7 +619,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 10),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 														children: [
 														const Text(
@@ -634,7 +634,7 @@ class _HomePageState extends State<HomePage> {
 																'Managing Director,\nSPAR NIGERIA',
 																textAlign: TextAlign.center,
 																style: TextStyle(
-																	color: Colors.blue,
+																	color: Colors.black,
 																))),
 														const Text('Olatunde Hakeeb',
 															style: TextStyle(
@@ -651,7 +651,7 @@ class _HomePageState extends State<HomePage> {
 														left: 10,
 														right: 10),
 													margin: const EdgeInsets.only(top: 10),
-													color: Colors.black,
+													color: Colors.blue,
 													child: Column(
 														children: [
 														const Text(
