@@ -103,3 +103,9 @@ flutter:
     - family: SocialCircledIcons
       fonts: 
         - asset: assets/fonts/SocialMediaCircled.otf
+
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway.ttf
+        - asset: assets/fonts/RalewayItalic.ttf
+          style: italic
