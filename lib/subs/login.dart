@@ -67,7 +67,7 @@ class LoginState extends State<Login> {
 		}
 
 		http.Response response = await _client.post(
-			Uri.parse("http://localhost/auth/login"),
+			Uri.parse("https://api.somerest.com.ng/auth/login"),
 			headers:{
 				"Content-Type": "application/json",
 			},

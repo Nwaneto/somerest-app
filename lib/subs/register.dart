@@ -77,7 +77,7 @@ class RegisterState extends State<Register> {
 
 		else {
 			http.Response response = await _client.post(
-				Uri.parse("http://localhost/auth/register"),
+				Uri.parse("https://api.somerest.com.ng/auth/register"),
 				headers:{
 					"Content-Type": "application/json",
 				},
@@ -95,13 +95,13 @@ class RegisterState extends State<Register> {
 
 			if(response.statusCode == 200) {
 				final report = data['data'];
+				final token = report['token'];
 				final email = report['email'];
 				final phone = report['phone'];
 				final id = report['id'];
-				final token = report['token'];
 				final name = report['name'];
 				final LocalStorage storage = LocalStorage.getInstance();
-				
+
 				// If this user wants to be remembered, add 30 days to the timer just because they want to be and then save that value.
 				int expiry = DateTime.now().add(const Duration(days: 30)).millisecondsSinceEpoch;
 
@@ -130,6 +130,7 @@ class RegisterState extends State<Register> {
 	}
 
 	void _advance() {
+		NotificationHelper.showSuccessful(context, "We have successfully created your account.");
 		Navigator.of(context).pushNamed("/user/home");
 	}
 
