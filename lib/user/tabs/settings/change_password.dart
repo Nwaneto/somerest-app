@@ -93,7 +93,7 @@ class ChangePasswordState extends State<ChangePassword> {
 				Uri.parse("https://api.somerest.com.ng/auth/change_password"),
 				headers:{
 					"Content-Type": "application/json",
-					LocalStorage.KEY_SWS_AUTH: token
+					LocalStorage.KEY_SWS_AUTH: token,
 				},
 				encoding: Encoding.getByName("UTF-8"),
 				body: jsonEncode({
