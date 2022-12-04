@@ -7,3 +7,5 @@ ios
 macos
 windows
 *.pdf
+.flutter-plugins
+.flutter-plugins-dependencies

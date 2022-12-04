@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 			title: 'Somerest',
 			theme: ThemeData(
 				primarySwatch: Colors.blue,
-				fontFamily: "Raleway",		
+				fontFamily: "Raleway",
 			),
 			initialRoute: "/",
 			onGenerateRoute: RouterGenerator.generateRoute,
